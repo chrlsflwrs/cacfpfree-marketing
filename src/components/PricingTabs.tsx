@@ -40,7 +40,7 @@ function TimeReportsCards() {
   ];
   const paidFeatures = [
     "Everything in free",
-    "Unlimited staff members",
+    "XX staff members",
     "Compliance dashboard",
     "Advanced reporting",
     "Priority support",
