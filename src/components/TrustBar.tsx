@@ -9,15 +9,6 @@ export default function TrustBar() {
           Trusted by daycare providers across Texas &middot; Built by CACFP
           compliance experts since 1990
         </p>
-        <p className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
-          CACFP Free is powered by CACFP Solutions &middot;{" "}
-          <a
-            href="mailto:help@cacfpsolutions.com"
-            className="text-white underline hover:opacity-90 transition-opacity"
-          >
-            help@cacfpsolutions.com
-          </a>
-        </p>
       </div>
     </section>
   );
