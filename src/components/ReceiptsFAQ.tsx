@@ -6,7 +6,7 @@ const faqs = [
   {
     question: "What types of receipts can I upload?",
     answer:
-      "Any receipt from any store — grocery, food service suppliers, warehouse clubs. Photos, scans, even slightly crumpled or faded receipts. The AI is designed to handle real-world conditions.",
+      "Any receipt from any store — grocery, food service suppliers, warehouse clubs. Photos or PDFs are acceptable. The AI can read both.",
   },
   {
     question: "How accurate is the AI categorization?",
