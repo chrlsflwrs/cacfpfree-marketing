@@ -276,7 +276,7 @@ export default function PricingTabs() {
       <div className="max-w-6xl mx-auto">
         {/* Tab nav */}
         <div className="flex justify-center mb-12">
-          <div className="flex border-b border-gray-200 overflow-x-auto">
+          <div className="flex border-b border-gray-200">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
