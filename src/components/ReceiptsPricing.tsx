@@ -7,7 +7,7 @@ const freeFeatures = [
 
 const proFeatures = [
   "Everything in free",
-  "Unlimited receipts",
+  "XX receipts",
   "Menu matching",
   "Detailed exports",
 ];
