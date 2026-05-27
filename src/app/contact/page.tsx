@@ -49,25 +49,6 @@ export default function ContactPage() {
                 Just want to say hello? We&apos;d love to hear from you.
               </p>
 
-              <div className="space-y-4 mb-6">
-                <a
-                  href="mailto:support@cacfpsolutions.com"
-                  className="flex items-start gap-3 text-[#1a1a2e] hover:text-[#48195d] transition-colors group"
-                >
-                  <span className="text-xl shrink-0 mt-0.5">📧</span>
-                  <span className="text-sm font-medium break-all group-hover:underline">
-                    support@cacfpsolutions.com
-                  </span>
-                </a>
-                <div className="flex items-start gap-3 text-[#6b7280]">
-                  <span className="text-xl shrink-0 mt-0.5">📍</span>
-                  <span className="text-sm">Dallas, Texas</span>
-                </div>
-              </div>
-
-              <p className="text-sm text-[#6b7280] italic">
-                We typically respond within 1 business day.
-              </p>
             </div>
 
             {/* Right — form */}
