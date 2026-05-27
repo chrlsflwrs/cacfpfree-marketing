@@ -14,7 +14,7 @@ export default function SoftwareComparison() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Traditional */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.08)] transition-all duration-200">
             <h3 className="text-lg font-semibold text-[#1a1a2e] mb-5">
               Traditional CACFP software
             </h3>
@@ -26,20 +26,27 @@ export default function SoftwareComparison() {
                 "Staff need training to use it",
                 "Desktop-first, painful on a phone",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-[#1a1a2e]">
-                  <span className="text-[#dc2626] font-bold shrink-0 mt-0.5">✗</span>
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-[#1a1a2e]"
+                >
+                  <span className="text-[#dc2626] font-bold shrink-0 mt-0.5">
+                    ✗
+                  </span>
                   {item}
                 </li>
               ))}
               <li className="flex items-start gap-3 text-sm text-[#1a1a2e] mt-1">
-                <span className="text-[#ca8a04] font-bold shrink-0 mt-0.5">⚠</span>
+                <span className="text-[#ca8a04] font-bold shrink-0 mt-0.5">
+                  ⚠
+                </span>
                 $100–$2,000+/month
               </li>
             </ul>
           </div>
 
           {/* CACFP Free */}
-          <div className="bg-white border-2 border-[#48195d] rounded-xl p-6 shadow-md">
+          <div className="bg-[#f3e8ff] border-2 border-[#48195d] rounded-2xl p-6 shadow-md hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.15)] transition-all duration-200">
             <div className="flex items-center gap-3 mb-5">
               <h3 className="text-lg font-semibold text-[#1a1a2e]">
                 CACFP Free software
@@ -57,8 +64,13 @@ export default function SoftwareComparison() {
                 "Mobile-first, works on any phone",
                 "Free tier available",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-[#1a1a2e]">
-                  <span className="text-[#16a34a] font-bold shrink-0 mt-0.5">✓</span>
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-[#1a1a2e]"
+                >
+                  <span className="text-[#16a34a] font-bold shrink-0 mt-0.5">
+                    ✓
+                  </span>
                   {item}
                 </li>
               ))}

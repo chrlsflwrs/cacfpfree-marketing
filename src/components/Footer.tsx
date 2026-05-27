@@ -15,12 +15,6 @@ export default function Footer() {
           <a href="/contact" className="text-gray-500 hover:text-[#48195d] transition-colors">
             Contact us
           </a>
-          <a
-            href="mailto:support@cacfpsolutions.com"
-            className="text-gray-500 hover:text-[#48195d] transition-colors"
-          >
-            support@cacfpsolutions.com
-          </a>
         </nav>
       </div>
     </footer>

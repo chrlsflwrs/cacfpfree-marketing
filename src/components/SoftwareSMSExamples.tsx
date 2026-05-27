@@ -6,7 +6,10 @@ function SMSCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+    <div
+      style={{ boxShadow: "0 4px 20px rgba(72,25,93,0.06)" }}
+      className="bg-white border border-gray-200 rounded-2xl overflow-hidden"
+    >
       <div className="bg-gray-100 px-4 py-2 flex items-center justify-between">
         <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wide">
           {label}
@@ -21,7 +24,13 @@ function SMSCard({
 function IncomingBubble({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex justify-start">
-      <div className="bg-[#f3f0f5] text-[#1a1a2e] rounded-2xl rounded-tl-sm px-4 py-3 max-w-[90%] text-sm leading-relaxed">
+      <div
+        style={{
+          background: "#f3e8ff",
+          borderRadius: "14px 14px 14px 4px",
+        }}
+        className="text-[#1a1a2e] px-4 py-3 max-w-[90%] text-sm leading-relaxed"
+      >
         {children}
       </div>
     </div>
@@ -31,13 +40,35 @@ function IncomingBubble({ children }: { children: React.ReactNode }) {
 function OutgoingBubble({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex justify-end">
-      <div className="bg-[#48195d] text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[90%] text-sm font-medium">
+      <div
+        style={{
+          background: "#48195d",
+          borderRadius: "14px 14px 4px 14px",
+        }}
+        className="text-white px-4 py-3 max-w-[90%] text-sm font-medium"
+      >
         {children}
       </div>
     </div>
   );
 }
 
+function ConfirmationBubble({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex justify-start">
+      <div
+        style={{
+          background: "#ecfdf5",
+          color: "#065f46",
+          borderRadius: "14px 14px 14px 4px",
+        }}
+        className="px-4 py-3 max-w-[90%] text-sm leading-relaxed"
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export default function SoftwareSMSExamples() {
   return (
@@ -98,7 +129,9 @@ export default function SoftwareSMSExamples() {
               cup. Prepared for 12 children. All correct?
             </IncomingBubble>
             <OutgoingBubble>YES</OutgoingBubble>
-            <IncomingBubble>✓ Recorded. Have a great lunch!</IncomingBubble>
+            <ConfirmationBubble>
+              ✓ Recorded. Have a great lunch!
+            </ConfirmationBubble>
           </SMSCard>
         </div>
       </div>

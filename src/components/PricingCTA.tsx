@@ -43,19 +43,25 @@ export default function PricingCTA() {
   }, [open]);
 
   return (
-    <section className="py-20 px-4 bg-[#fafafc]">
+    <section
+      style={{ background: "linear-gradient(135deg, #48195d 0%, #6b2d7b 100%)" }}
+      className="py-20 px-4"
+    >
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#1a1a2e] mb-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
           Start free today
         </h2>
-        <p className="text-lg text-gray-500 mb-8 leading-relaxed">
-          Every tool starts with a free plan. No credit card. No commitment. Just pick a
-          tool and go.
+        <p
+          className="text-lg mb-8 leading-relaxed"
+          style={{ color: "rgba(255,255,255,0.85)" }}
+        >
+          Every tool starts with a free plan. No credit card. No commitment.
+          Just pick a tool and go.
         </p>
         <div ref={ref} className="relative w-full sm:w-auto sm:inline-block">
           <button
             onClick={() => setOpen((v) => !v)}
-            className="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px]"
+            className="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-[#E8734A] rounded-xl hover:bg-[#d4663f] transition-colors min-h-[44px]"
           >
             Get started free
           </button>

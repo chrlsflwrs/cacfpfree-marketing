@@ -14,7 +14,10 @@ export default function TimeReportsSMSDemo() {
 
         {/* Phone mockup */}
         <div className="max-w-[400px] mx-auto">
-          <div className="bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden">
+          <div
+            style={{ boxShadow: "0 4px 20px rgba(72,25,93,0.06)" }}
+            className="bg-white border border-gray-200 rounded-[20px] overflow-hidden"
+          >
             {/* Status bar */}
             <div className="bg-gray-100 px-4 py-2 flex items-center justify-between">
               <span className="text-xs font-semibold text-gray-500">
@@ -34,7 +37,13 @@ export default function TimeReportsSMSDemo() {
             <div className="flex flex-col gap-1 p-4">
               {/* Incoming */}
               <div className="flex justify-start">
-                <div className="bg-[#f3f0f5] text-[#1a1a2e] rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] text-sm leading-relaxed">
+                <div
+                  style={{
+                    background: "#f3e8ff",
+                    borderRadius: "14px 14px 14px 4px",
+                  }}
+                  className="text-[#1a1a2e] px-4 py-3 max-w-[85%] text-sm leading-relaxed"
+                >
                   Good morning Maya. Your hours for today: 7:00 AM – 5:00 PM |
                   3 hrs food | 7 hrs other. Same as usual?
                 </div>
@@ -45,7 +54,13 @@ export default function TimeReportsSMSDemo() {
 
               {/* Outgoing */}
               <div className="flex justify-end">
-                <div className="bg-[#48195d] text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%] text-sm font-medium">
+                <div
+                  style={{
+                    background: "#48195d",
+                    borderRadius: "14px 14px 4px 14px",
+                  }}
+                  className="text-white px-4 py-3 max-w-[85%] text-sm font-medium"
+                >
                   YES
                 </div>
               </div>
@@ -55,7 +70,14 @@ export default function TimeReportsSMSDemo() {
 
               {/* Incoming confirmation */}
               <div className="flex justify-start">
-                <div className="bg-[#f3f0f5] text-[#1a1a2e] rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] text-sm leading-relaxed">
+                <div
+                  style={{
+                    background: "#ecfdf5",
+                    color: "#065f46",
+                    borderRadius: "14px 14px 14px 4px",
+                  }}
+                  className="px-4 py-3 max-w-[85%] text-sm leading-relaxed"
+                >
                   ✓ You&apos;re all set for today. Have a great day!
                 </div>
               </div>

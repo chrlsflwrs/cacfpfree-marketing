@@ -86,68 +86,81 @@ export default function ProductCards() {
           {products.map((product) => (
             <div
               key={product.name}
-              className={`flex flex-col rounded-xl border p-6 ${
+              className={`flex flex-col rounded-2xl border overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.08)] transition-all duration-200 ${
                 product.featured
                   ? "border-[#48195d] shadow-md"
                   : "border-gray-200 shadow-sm"
               }`}
             >
-              {/* Badge + icon */}
-              <div className="flex items-center justify-between mb-4">
-                <span
-                  className={`px-2.5 py-1 rounded-full text-xs font-semibold ${product.badge.bg} ${product.badge.text}`}
-                >
-                  {product.badge.label}
-                </span>
-                <span className="text-2xl" aria-hidden="true">
-                  {product.icon}
-                </span>
-              </div>
+              {/* Gradient top stripe for featured */}
+              {product.featured && (
+                <div
+                  style={{
+                    background: "linear-gradient(90deg, #48195d, #E8734A)",
+                    height: "4px",
+                  }}
+                />
+              )}
 
-              {/* Name */}
-              <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
-                {product.name}
-              </h3>
-
-              {/* Description */}
-              <p className="text-sm text-gray-500 leading-relaxed mb-5">
-                {product.description}
-              </p>
-
-              {/* Features */}
-              <ul className="flex flex-col gap-2 mb-6 flex-1">
-                {product.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-start gap-2 text-sm text-[#1a1a2e]"
+              {/* Card content */}
+              <div className="flex flex-col flex-1 p-6">
+                {/* Badge + icon */}
+                <div className="flex items-center justify-between mb-4">
+                  <span
+                    className={`px-2.5 py-1 rounded-full text-xs font-semibold ${product.badge.bg} ${product.badge.text}`}
                   >
-                    <span
-                      className="text-green-600 mt-0.5 shrink-0 font-bold"
-                      aria-hidden="true"
+                    {product.badge.label}
+                  </span>
+                  <span className="text-2xl" aria-hidden="true">
+                    {product.icon}
+                  </span>
+                </div>
+
+                {/* Name */}
+                <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
+                  {product.name}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-gray-500 leading-relaxed mb-5">
+                  {product.description}
+                </p>
+
+                {/* Features */}
+                <ul className="flex flex-col gap-2 mb-6 flex-1">
+                  {product.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm text-[#1a1a2e]"
                     >
-                      ✓
-                    </span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+                      <span
+                        className="text-green-600 mt-0.5 shrink-0 font-bold"
+                        aria-hidden="true"
+                      >
+                        ✓
+                      </span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
 
-              {/* CTA button */}
-              <a
-                href={product.ctaHref}
-                className={`w-full py-3 text-sm font-semibold text-center rounded-lg transition-colors min-h-[44px] flex items-center justify-center ${
-                  product.ctaVariant === "solid"
-                    ? "bg-[#48195d] text-white hover:bg-[#3a1449]"
-                    : "border border-[#48195d] text-[#48195d] hover:bg-[#fafafc]"
-                }`}
-              >
-                {product.cta}
-              </a>
+                {/* CTA button */}
+                <a
+                  href={product.ctaHref}
+                  className={`w-full py-3 text-sm font-semibold text-center rounded-lg transition-colors min-h-[44px] flex items-center justify-center ${
+                    product.ctaVariant === "solid"
+                      ? "bg-[#48195d] text-white hover:bg-[#3a1449]"
+                      : "border border-[#48195d] text-[#48195d] hover:bg-[#fafafc]"
+                  }`}
+                >
+                  {product.cta}
+                </a>
 
-              {/* Price note */}
-              <p className="mt-3 text-xs text-center text-gray-400">
-                {product.priceNote}
-              </p>
+                {/* Price note */}
+                <p className="mt-3 text-xs text-center text-gray-400">
+                  {product.priceNote}
+                </p>
+              </div>
             </div>
           ))}
         </div>

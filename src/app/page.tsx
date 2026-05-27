@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
 import ProductCards from "@/components/ProductCards";
 import ValueProps from "@/components/ValueProps";
+import Testimonials from "@/components/Testimonials";
 import TrustBar from "@/components/TrustBar";
 
 export const metadata: Metadata = {
@@ -32,6 +33,7 @@ export default function Home() {
       <HeroSection />
       <ProductCards />
       <ValueProps />
+      <Testimonials />
       <TrustBar />
     </>
   );

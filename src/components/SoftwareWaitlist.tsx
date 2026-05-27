@@ -49,12 +49,19 @@ export default function SoftwareWaitlist() {
   }
 
   return (
-    <section id="waitlist" className="py-20 px-4 bg-[#fafafc]">
+    <section
+      id="waitlist"
+      style={{ background: "linear-gradient(135deg, #48195d 0%, #6b2d7b 100%)" }}
+      className="py-20 px-4"
+    >
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#1a1a2e] mb-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
           Be the first to know when it&apos;s ready
         </h2>
-        <p className="text-gray-500 text-lg leading-relaxed mb-8">
+        <p
+          className="text-lg leading-relaxed mb-8"
+          style={{ color: "rgba(255,255,255,0.85)" }}
+        >
           We&apos;ll email you as soon as CACFP software launches. No spam —
           just one email when it&apos;s time.
         </p>
@@ -68,7 +75,7 @@ export default function SoftwareWaitlist() {
         </form>
 
         {submitted ? (
-          <div className="bg-[#f0fdf4] border border-[#bbf7d0] rounded-xl px-6 py-6 text-center">
+          <div className="bg-[#f0fdf4] border border-[#bbf7d0] rounded-2xl px-6 py-6 text-center">
             <p className="text-[#16a34a] font-semibold text-xl mb-1">
               🎉 You&apos;re on the list!
             </p>
@@ -86,13 +93,17 @@ export default function SoftwareWaitlist() {
             className="w-full"
           >
             <input type="hidden" name="form-name" value="waitlist" />
-            <input type="hidden" name="interest" value="CACFP Software waitlist" />
+            <input
+              type="hidden"
+              name="interest"
+              value="CACFP Software waitlist"
+            />
 
             <div className="flex flex-col gap-3 w-full max-w-lg mx-auto">
               <div className="text-left">
                 <label
                   htmlFor="waitlist-name"
-                  className="block text-sm font-medium text-[#1a1a2e] mb-1.5"
+                  className="block text-sm font-medium text-white mb-1.5"
                 >
                   Your name
                 </label>
@@ -108,19 +119,21 @@ export default function SoftwareWaitlist() {
                   }}
                   placeholder="Jane Smith"
                   autoComplete="name"
-                  className={`w-full px-4 py-3 text-sm border rounded-lg bg-white text-[#1a1a2e] placeholder-gray-400 focus:outline-none focus:border-[#48195d] focus:ring-1 focus:ring-[#48195d] min-h-[44px] ${
+                  className={`w-full px-4 py-3 text-sm border rounded-lg bg-white text-[#1a1a2e] placeholder-gray-400 focus:outline-none focus:border-[#E8734A] focus:ring-1 focus:ring-[#E8734A] min-h-[44px] ${
                     errors.name ? "border-red-400" : "border-gray-200"
                   }`}
                 />
                 {errors.name && (
-                  <p className="text-red-500 text-xs mt-1 text-left">{errors.name}</p>
+                  <p className="text-red-300 text-xs mt-1 text-left">
+                    {errors.name}
+                  </p>
                 )}
               </div>
 
               <div className="text-left">
                 <label
                   htmlFor="waitlist-email"
-                  className="block text-sm font-medium text-[#1a1a2e] mb-1.5"
+                  className="block text-sm font-medium text-white mb-1.5"
                 >
                   Email address
                 </label>
@@ -136,19 +149,21 @@ export default function SoftwareWaitlist() {
                   }}
                   placeholder="jane@example.com"
                   autoComplete="email"
-                  className={`w-full px-4 py-3 text-sm border rounded-lg bg-white text-[#1a1a2e] placeholder-gray-400 focus:outline-none focus:border-[#48195d] focus:ring-1 focus:ring-[#48195d] min-h-[44px] ${
+                  className={`w-full px-4 py-3 text-sm border rounded-lg bg-white text-[#1a1a2e] placeholder-gray-400 focus:outline-none focus:border-[#E8734A] focus:ring-1 focus:ring-[#E8734A] min-h-[44px] ${
                     errors.email ? "border-red-400" : "border-gray-200"
                   }`}
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-xs mt-1 text-left">{errors.email}</p>
+                  <p className="text-red-300 text-xs mt-1 text-left">
+                    {errors.email}
+                  </p>
                 )}
               </div>
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full px-6 py-3 text-sm font-semibold text-white bg-[#48195d] rounded-lg hover:bg-[#3a1449] transition-colors min-h-[44px] disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full px-6 py-3 text-sm font-semibold text-white bg-[#E8734A] rounded-lg hover:bg-[#d4663f] transition-colors min-h-[44px] disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {submitting ? "Joining…" : "Join the waitlist"}
               </button>
@@ -156,7 +171,10 @@ export default function SoftwareWaitlist() {
           </form>
         )}
 
-        <p className="text-sm text-gray-400 italic mt-5">
+        <p
+          className="text-sm italic mt-5"
+          style={{ color: "rgba(255,255,255,0.65)" }}
+        >
           Already using time reports or receipts? You&apos;re automatically on
           the list.
         </p>

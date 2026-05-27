@@ -13,18 +13,26 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="py-16 px-4 bg-white text-center">
+      {/* Small purple gradient header */}
+      <div
+        style={{
+          background: "linear-gradient(135deg, #48195d 0%, #6b2d7b 100%)",
+        }}
+        className="px-4 py-12 text-center"
+      >
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#1a1a2e] mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3">
             Simple, transparent pricing
           </h1>
-          <p className="text-lg text-[#6b7280] leading-relaxed">
-            Every tool starts free. No credit card required. Upgrade only when you need
-            more.
+          <p
+            className="text-lg leading-relaxed"
+            style={{ color: "rgba(255,255,255,0.85)" }}
+          >
+            Every tool starts free. No credit card required. Upgrade only when
+            you need more.
           </p>
         </div>
-      </section>
+      </div>
 
       {/* Product tabs + pricing cards */}
       <PricingTabs />

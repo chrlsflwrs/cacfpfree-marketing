@@ -18,6 +18,17 @@ function CheckMark() {
   );
 }
 
+function GradientStripe() {
+  return (
+    <div
+      style={{
+        background: "linear-gradient(90deg, #48195d, #E8734A)",
+        height: "4px",
+      }}
+    />
+  );
+}
+
 function TimeReportsCards() {
   const freeFeatures = [
     "Up to 2 staff members",
@@ -37,36 +48,41 @@ function TimeReportsCards() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {/* Free — featured */}
-      <div className="flex flex-col bg-white border-2 border-[#48195d] rounded-2xl p-8 shadow-md">
-        <div className="mb-5">
-          <span className="inline-block px-3 py-1 text-xs font-bold text-[#48195d] bg-[#f3e8ff] rounded-full uppercase tracking-wide">
-            Start here
-          </span>
+      <div className="flex flex-col bg-white border-2 border-[#48195d] rounded-2xl overflow-hidden shadow-md hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.12)] transition-all duration-200">
+        <GradientStripe />
+        <div className="flex flex-col flex-1 p-8">
+          <div className="mb-5">
+            <span className="inline-block px-3 py-1 text-xs font-bold text-[#48195d] bg-[#f3e8ff] rounded-full uppercase tracking-wide">
+              Start here
+            </span>
+          </div>
+          <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Free</h3>
+          <div className="flex items-baseline gap-1 mb-2">
+            <span className="text-5xl font-bold text-[#1a1a2e]">$0</span>
+            <span className="text-gray-400 text-sm">/ forever</span>
+          </div>
+          <p className="text-sm text-gray-500 mb-6">
+            Perfect for small daycares getting started
+          </p>
+          <ul className="flex flex-col gap-3 mb-8 flex-1">
+            {freeFeatures.map((f) => (
+              <li key={f} className="flex items-start gap-2 text-sm text-[#1a1a2e]">
+                <CheckMark />
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="/time-reports"
+            className="w-full py-3 text-sm font-semibold text-center text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
+          >
+            Get started free
+          </a>
         </div>
-        <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Free</h3>
-        <div className="flex items-baseline gap-1 mb-2">
-          <span className="text-5xl font-bold text-[#1a1a2e]">$0</span>
-          <span className="text-gray-400 text-sm">/ forever</span>
-        </div>
-        <p className="text-sm text-gray-500 mb-6">Perfect for small daycares getting started</p>
-        <ul className="flex flex-col gap-3 mb-8 flex-1">
-          {freeFeatures.map((f) => (
-            <li key={f} className="flex items-start gap-2 text-sm text-[#1a1a2e]">
-              <CheckMark />
-              {f}
-            </li>
-          ))}
-        </ul>
-        <a
-          href="/time-reports"
-          className="w-full py-3 text-sm font-semibold text-center text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
-        >
-          Get started free
-        </a>
       </div>
 
       {/* Paid */}
-      <div className="flex flex-col bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+      <div className="flex flex-col bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.08)] transition-all duration-200">
         <div className="mb-5 h-6" />
         <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Paid</h3>
         <div className="flex items-baseline gap-1 mb-2">
@@ -91,10 +107,13 @@ function TimeReportsCards() {
       </div>
 
       {/* Custom / contact */}
-      <div className="flex flex-col bg-[#fafafc] border border-gray-200 rounded-2xl p-8 shadow-sm items-center justify-center text-center">
-        <h3 className="text-xl font-bold text-[#1a1a2e] mb-3">Need a custom plan?</h3>
+      <div className="flex flex-col bg-[#fafafc] border border-gray-200 rounded-2xl p-8 shadow-sm items-center justify-center text-center hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.08)] transition-all duration-200">
+        <h3 className="text-xl font-bold text-[#1a1a2e] mb-3">
+          Need a custom plan?
+        </h3>
         <p className="text-sm text-gray-500 mb-8">
-          Multi-site sponsors or large centers — let&apos;s talk about what you need.
+          Multi-site sponsors or large centers — let&apos;s talk about what you
+          need.
         </p>
         <a
           href="/contact"
@@ -130,36 +149,39 @@ function ReceiptsCards() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {/* Free — featured */}
-      <div className="flex flex-col bg-white border-2 border-[#48195d] rounded-2xl p-8 shadow-md">
-        <div className="mb-5">
-          <span className="inline-block px-3 py-1 text-xs font-bold text-[#48195d] bg-[#f3e8ff] rounded-full uppercase tracking-wide">
-            Start here
-          </span>
+      <div className="flex flex-col bg-white border-2 border-[#48195d] rounded-2xl overflow-hidden shadow-md hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.12)] transition-all duration-200">
+        <GradientStripe />
+        <div className="flex flex-col flex-1 p-8">
+          <div className="mb-5">
+            <span className="inline-block px-3 py-1 text-xs font-bold text-[#48195d] bg-[#f3e8ff] rounded-full uppercase tracking-wide">
+              Start here
+            </span>
+          </div>
+          <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Free</h3>
+          <div className="flex items-baseline gap-1 mb-2">
+            <span className="text-5xl font-bold text-[#1a1a2e]">$0</span>
+            <span className="text-gray-400 text-sm">/ forever</span>
+          </div>
+          <p className="text-sm text-gray-500 mb-6">For getting started</p>
+          <ul className="flex flex-col gap-3 mb-8 flex-1">
+            {freeFeatures.map((f) => (
+              <li key={f} className="flex items-start gap-2 text-sm text-[#1a1a2e]">
+                <CheckMark />
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="/receipts"
+            className="w-full py-3 text-sm font-semibold text-center text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
+          >
+            Get started free
+          </a>
         </div>
-        <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Free</h3>
-        <div className="flex items-baseline gap-1 mb-2">
-          <span className="text-5xl font-bold text-[#1a1a2e]">$0</span>
-          <span className="text-gray-400 text-sm">/ forever</span>
-        </div>
-        <p className="text-sm text-gray-500 mb-6">For getting started</p>
-        <ul className="flex flex-col gap-3 mb-8 flex-1">
-          {freeFeatures.map((f) => (
-            <li key={f} className="flex items-start gap-2 text-sm text-[#1a1a2e]">
-              <CheckMark />
-              {f}
-            </li>
-          ))}
-        </ul>
-        <a
-          href="/receipts"
-          className="w-full py-3 text-sm font-semibold text-center text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
-        >
-          Get started free
-        </a>
       </div>
 
       {/* Professional */}
-      <div className="flex flex-col bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+      <div className="flex flex-col bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.08)] transition-all duration-200">
         <div className="mb-5 h-6" />
         <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Professional</h3>
         <div className="flex items-baseline gap-1 mb-2">
@@ -184,7 +206,7 @@ function ReceiptsCards() {
       </div>
 
       {/* Sponsor */}
-      <div className="flex flex-col bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+      <div className="flex flex-col bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.08)] transition-all duration-200">
         <div className="mb-5 h-6" />
         <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Sponsor</h3>
         <div className="flex items-baseline gap-1 mb-2">
@@ -224,8 +246,9 @@ function SoftwareComingSoon() {
           CACFP software pricing coming soon
         </h3>
         <p className="text-sm text-gray-500 mb-8 leading-relaxed">
-          Enrollment, meal counts, and meal production records — pricing will be announced
-          when the platform launches. Join the waitlist to be first to know.
+          Enrollment, meal counts, and meal production records — pricing will be
+          announced when the platform launches. Join the waitlist to be first to
+          know.
         </p>
         <a
           href="/software"
@@ -234,7 +257,8 @@ function SoftwareComingSoon() {
           Join the waitlist
         </a>
         <p className="mt-4 text-xs text-gray-400 italic">
-          Already using time reports or receipts? You&apos;re automatically on the list.
+          Already using time reports or receipts? You&apos;re automatically on
+          the list.
         </p>
       </div>
     </div>
