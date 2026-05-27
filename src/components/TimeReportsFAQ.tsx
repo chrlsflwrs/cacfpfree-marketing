@@ -23,11 +23,6 @@ const faqs = [
     answer:
       "Their default hours stand. Nothing breaks. The system alerts the director if texts fail to deliver for 5+ days so you can follow up.",
   },
-  {
-    question: "Can I switch from paper TDRs mid-year?",
-    answer:
-      "Yes. Start any month. Your report begins from the month you sign up — no need to backfill previous months.",
-  },
 ];
 
 export default function TimeReportsFAQ() {
