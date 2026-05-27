@@ -9,24 +9,14 @@ const faqs = [
       "Any receipt from any store — grocery, food service suppliers, warehouse clubs. Photos or PDFs are acceptable. The AI can read both.",
   },
   {
-    question: "How accurate is the AI categorization?",
-    answer:
-      "Very accurate for common grocery items. When the AI isn't sure, it flags it for you to confirm rather than guessing. You always have the final say.",
-  },
-  {
     question: "Can I use this alongside my existing CACFP software?",
     answer:
       "Yes. Works as a standalone tool. If you're using KidKare or another platform for meal counts, you can still use this just for receipts — no conflicts.",
   },
   {
-    question: "Will my auditor accept these reports?",
+    question: "How do I see results after I upload a receipt?",
     answer:
-      "Reports show categorized expenses with the original receipt images attached. Auditors can see both the summary and source documents in one place.",
-  },
-  {
-    question: "What about receipts from earlier this year?",
-    answer:
-      "Upload them anytime. You can backfill previous months by uploading old receipts and assigning them to the correct month.",
+      "You receive a PDF report via email. It shows you total food, supplies, and milk purchased with a copy of the original receipt image attached.",
   },
 ];
 
