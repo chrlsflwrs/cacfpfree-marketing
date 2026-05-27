@@ -13,9 +13,9 @@ const steps = [
   },
   {
     number: 3,
-    title: "Review and export",
+    title: "Review your report",
     description:
-      "Check the summary, make any corrections, and download monthly reports whenever you need them. Audit-ready.",
+      "See a simple breakdown of food & supply items purchased, including milk. Unallowable items are deducted automatically.",
   },
 ];
 
