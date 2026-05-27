@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CACFP Free — Marketing Site
+
+Next.js marketing site for [CACFPFree.com](https://cacfpfree.com), operated by CACFP Solutions.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build & Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # Generates static export in /out
+```
 
-## Learn More
+The site is deployed via Netlify. Push to `main` triggers an automatic deploy.
 
-To learn more about Next.js, take a look at the following resources:
+## Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Route | Description |
+|---|---|
+| `/` | Homepage |
+| `/time-reports` | Time Reports product page |
+| `/receipts` | Receipts product page |
+| `/software` | CACFP Software (coming soon) + waitlist |
+| `/pricing` | Pricing |
+| `/privacy` | Privacy policy |
+| `/terms` | Terms of service |
+| `/contact` | Contact form |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Netlify Forms Setup
 
-## Deploy on Vercel
+The site uses [Netlify Forms](https://docs.netlify.com/forms/setup/) for form submissions. Two forms are configured:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Forms in use
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Form name | Location | Purpose |
+|---|---|---|
+| `contact` | `/contact` | General contact form |
+| `waitlist` | `/software` (waitlist section) | CACFP Software launch waitlist |
+
+### Setting up email notifications (required after first deploy)
+
+After Netlify processes a deploy that includes these forms, do the following for **each form**:
+
+1. Go to [Netlify Dashboard](https://app.netlify.com) → your site → **Forms**
+2. You should see both `contact` and `waitlist` forms listed
+3. Click on a form → **Form notifications** → **Add notification** → **Email notification**
+4. Enter: `support@cacfpsolutions.com`
+5. Click **Save**
+6. Repeat for the other form
+
+Once configured, every form submission will send an email to `support@cacfpsolutions.com`. Submissions are also stored in the Netlify dashboard under Forms.
+
+### Troubleshooting forms
+
+If forms don't appear in the Netlify dashboard after deploy:
+- Netlify detects forms by scanning the static HTML for `data-netlify="true"` during build
+- Both forms include a hidden static HTML version for Netlify detection (in addition to the interactive React form)
+- If still not detected, trigger a fresh deploy from the Netlify dashboard
+
+## SEO
+
+- **sitemap.xml**: `public/sitemap.xml` — lists all pages
+- **robots.txt**: `public/robots.txt` — allows all crawlers
+- **Structured data**: Organization JSON-LD on the homepage
+- **Favicons**: SVG favicon in `public/favicon.svg` and `public/apple-touch-icon.svg`
+  - For production, generate proper `.ico` and `.png` versions at [realfavicongenerator.net](https://realfavicongenerator.net)
+
+## Brand Colors
+
+| Name | Hex |
+|---|---|
+| Brand Purple | `#48195d` |
+| Accent Orange | `#E8734A` |
+| Background | `#fafafc` |
+| Dark Text | `#1a1a2e` |
+| Muted Text | `#6b7280` |
+| Border Gray | `#e5e7eb` |

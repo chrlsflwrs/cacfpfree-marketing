@@ -8,9 +8,9 @@ import SoftwareAvailableNow from "@/components/SoftwareAvailableNow";
 import SoftwareWaitlist from "@/components/SoftwareWaitlist";
 
 export const metadata: Metadata = {
-  title: "CACFP Software — Enrollment, Meal Counts & Compliance | CACFP Free",
+  title: { absolute: "CACFP Software — Enrollment, meal counts & compliance (coming soon)" },
   description:
-    "Full CACFP software that runs on SMS. Enrollment, meal counts, meal production records — the system texts you, you confirm. Coming soon. Join the waitlist.",
+    "Full CACFP compliance platform. Enrollment management, meal counts, meal production records. SMS-based daily workflow. Join the waitlist.",
 };
 
 export default function SoftwarePage() {

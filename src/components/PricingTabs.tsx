@@ -97,7 +97,7 @@ function TimeReportsCards() {
           Multi-site sponsors or large centers — let&apos;s talk about what you need.
         </p>
         <a
-          href="#"
+          href="/contact"
           className="w-full py-3 text-sm font-semibold text-center text-[#E8734A] border border-[#E8734A] rounded-xl hover:bg-orange-50 transition-colors min-h-[44px] flex items-center justify-center"
         >
           Contact us
@@ -201,7 +201,7 @@ function ReceiptsCards() {
           ))}
         </ul>
         <a
-          href="#"
+          href="/contact"
           className="w-full py-3 text-sm font-semibold text-center text-[#E8734A] border border-[#E8734A] rounded-xl hover:bg-orange-50 transition-colors min-h-[44px] flex items-center justify-center"
         >
           Contact us

@@ -52,10 +52,10 @@ export default function PricingCTA() {
           Every tool starts with a free plan. No credit card. No commitment. Just pick a
           tool and go.
         </p>
-        <div ref={ref} className="relative inline-block">
+        <div ref={ref} className="relative w-full sm:w-auto sm:inline-block">
           <button
             onClick={() => setOpen((v) => !v)}
-            className="px-8 py-4 text-base font-semibold text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px]"
+            className="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px]"
           >
             Get started free
           </button>

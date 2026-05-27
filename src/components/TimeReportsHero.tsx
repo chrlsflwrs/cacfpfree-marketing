@@ -16,13 +16,13 @@ export default function TimeReportsHero() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <a
                 href="/time-reports"
-                className="px-7 py-3.5 text-base font-semibold text-white bg-[#48195d] rounded-lg hover:bg-[#3a1449] transition-colors min-w-[220px] min-h-[44px] flex items-center justify-center"
+                className="w-full sm:w-auto px-7 py-3.5 text-base font-semibold text-white bg-[#48195d] rounded-lg hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
               >
                 Start free — takes 5 minutes
               </a>
               <a
                 href="#how-it-works"
-                className="px-7 py-3.5 text-base font-semibold text-[#48195d] border border-[#48195d] rounded-lg hover:bg-white transition-colors min-w-[160px] min-h-[44px] flex items-center justify-center"
+                className="w-full sm:w-auto px-7 py-3.5 text-base font-semibold text-[#48195d] border border-[#48195d] rounded-lg hover:bg-white transition-colors min-h-[44px] flex items-center justify-center"
               >
                 See how it works
               </a>

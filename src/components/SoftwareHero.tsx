@@ -20,13 +20,13 @@ export default function SoftwareHero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#waitlist"
-            className="px-7 py-3.5 text-base font-semibold text-white bg-[#48195d] rounded-lg hover:bg-[#3a1449] transition-colors min-h-[44px] inline-flex items-center"
+            className="w-full sm:w-auto px-7 py-3.5 text-base font-semibold text-white bg-[#48195d] rounded-lg hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
           >
             Join the waitlist
           </a>
           <a
             href="#available-now"
-            className="px-7 py-3.5 text-base font-semibold text-[#48195d] border border-[#48195d] rounded-lg hover:bg-white transition-colors min-h-[44px] inline-flex items-center text-center"
+            className="w-full sm:w-auto px-7 py-3.5 text-base font-semibold text-[#48195d] border border-[#48195d] rounded-lg hover:bg-white transition-colors min-h-[44px] flex items-center justify-center text-center"
           >
             Already using our other tools? You&apos;re first in line
           </a>

@@ -5,9 +5,9 @@ import PricingFAQ from "@/components/PricingFAQ";
 import PricingCTA from "@/components/PricingCTA";
 
 export const metadata: Metadata = {
-  title: "Pricing — CACFP Free",
+  title: { absolute: "Pricing — CACFP Free" },
   description:
-    "Simple, transparent pricing for all CACFP tools. Every tool starts free. No credit card required. Upgrade only when you need more.",
+    "Simple, transparent pricing for CACFP tools. Every tool starts free. No credit card required. Upgrade only when you need more.",
 };
 
 export default function PricingPage() {

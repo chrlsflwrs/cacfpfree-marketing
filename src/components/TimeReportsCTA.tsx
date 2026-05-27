@@ -11,7 +11,7 @@ export default function TimeReportsCTA() {
         </p>
         <a
           href="/time-reports"
-          className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px]"
+          className="flex sm:inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px]"
         >
           Start free — no credit card needed
         </a>

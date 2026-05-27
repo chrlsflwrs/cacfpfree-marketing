@@ -1,0 +1,63 @@
+import type { Metadata } from "next";
+import ContactForm from "@/components/ContactForm";
+
+export const metadata: Metadata = {
+  title: { absolute: "Contact us — CACFP Free" },
+  description:
+    "Get in touch with the CACFP Free team. Questions, support, or just say hello.",
+};
+
+export default function ContactPage() {
+  return (
+    <div className="bg-[#fafafc] py-14 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Hidden form for Netlify detection on static build */}
+        <form name="contact" data-netlify="true" hidden>
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <textarea name="message" />
+        </form>
+
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          {/* Left — contact info */}
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-[#1a1a2e] mb-3">
+              Get in touch
+            </h1>
+            <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
+              Have a question about CACFP Free? Need help getting started? Just want to say
+              hello? We&apos;d love to hear from you.
+            </p>
+
+            <div className="space-y-4 mb-6">
+              <a
+                href="mailto:support@cacfpsolutions.com"
+                className="flex items-start gap-3 text-[#1a1a2e] hover:text-[#48195d] transition-colors group"
+              >
+                <span className="text-xl shrink-0 mt-0.5">📧</span>
+                <span className="text-sm font-medium break-all group-hover:underline">
+                  support@cacfpsolutions.com
+                </span>
+              </a>
+              <div className="flex items-start gap-3 text-[#6b7280]">
+                <span className="text-xl shrink-0 mt-0.5">📍</span>
+                <span className="text-sm">Dallas, Texas</span>
+              </div>
+            </div>
+
+            <p className="text-sm text-[#6b7280] italic">
+              We typically respond within 1 business day.
+            </p>
+          </div>
+
+          {/* Right — form */}
+          <div className="bg-white rounded-2xl border border-[#e5e7eb] p-6 sm:p-8">
+            <h2 className="text-lg font-semibold text-[#1a1a2e] mb-5">Send us a message</h2>
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

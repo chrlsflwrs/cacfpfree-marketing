@@ -8,9 +8,9 @@ import TimeReportsFAQ from "@/components/TimeReportsFAQ";
 import TimeReportsCTA from "@/components/TimeReportsCTA";
 
 export const metadata: Metadata = {
-  title: "CACFP Time Reports — Track staff hours by text | CACFP Free",
+  title: { absolute: "CACFP Time Reports — Track staff time with daily texts" },
   description:
-    "Daily SMS time confirmations, electronic signatures, and audit-ready PDF reports. Free for up to 2 staff. No app to download.",
+    "Automated CACFP time distribution reports. Staff get a daily text, tap YES, done. Electronic signatures, audit-ready PDFs. Free for up to 2 staff.",
 };
 
 export default function TimeReportsPage() {

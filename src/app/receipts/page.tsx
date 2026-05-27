@@ -10,9 +10,9 @@ import ReceiptsFAQ from "@/components/ReceiptsFAQ";
 import ReceiptsCTA from "@/components/ReceiptsCTA";
 
 export const metadata: Metadata = {
-  title: "CACFP Receipts — AI receipt scanning for CACFP compliance | CACFP Free",
+  title: { absolute: "CACFP Receipts — AI-powered receipt scanning for daycares" },
   description:
-    "Snap a photo, AI extracts and categorizes your CACFP receipts automatically. Menu matching, monthly reports, audit-ready. Free to start.",
+    "Snap a photo of any receipt. AI extracts data, categorizes expenses, and keeps you audit-ready. Menu vs. receipt matching. Start free.",
 };
 
 export default function ReceiptsPage() {

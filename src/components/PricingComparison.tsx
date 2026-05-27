@@ -88,6 +88,7 @@ export default function PricingComparison() {
           What&apos;s included at every level
         </h2>
 
+        <p className="text-xs text-gray-400 text-right mb-2 sm:hidden">← Scroll to see all features →</p>
         <div className="overflow-x-auto rounded-2xl border border-gray-200">
           <table className="w-full text-sm min-w-[600px] bg-white">
             <thead>

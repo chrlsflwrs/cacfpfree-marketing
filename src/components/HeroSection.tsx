@@ -57,10 +57,10 @@ export default function HeroSection() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           {/* Get started free — opens app picker dropdown */}
-          <div ref={ref} className="relative">
+          <div ref={ref} className="relative w-full sm:w-auto">
             <button
               onClick={() => setDropdownOpen((v) => !v)}
-              className="px-7 py-3.5 text-base font-semibold text-white bg-[#48195d] rounded-lg hover:bg-[#3a1449] transition-colors min-w-[190px] min-h-[44px]"
+              className="w-full sm:w-auto px-7 py-3.5 text-base font-semibold text-white bg-[#48195d] rounded-lg hover:bg-[#3a1449] transition-colors min-h-[44px]"
             >
               Get started free
             </button>
@@ -72,7 +72,7 @@ export default function HeroSection() {
           {/* See how it works — scrolls to product cards */}
           <a
             href="#products"
-            className="px-7 py-3.5 text-base font-semibold text-[#48195d] border border-[#48195d] rounded-lg hover:bg-white transition-colors min-w-[190px] min-h-[44px] flex items-center justify-center"
+            className="w-full sm:w-auto px-7 py-3.5 text-base font-semibold text-[#48195d] border border-[#48195d] rounded-lg hover:bg-white transition-colors min-h-[44px] flex items-center justify-center"
           >
             See how it works
           </a>

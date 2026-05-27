@@ -6,13 +6,13 @@ export default function Footer() {
           © 2026 CACFP Solutions. All rights reserved.
         </p>
         <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm">
-          <a href="#" className="text-gray-500 hover:text-[#48195d] transition-colors">
+          <a href="/privacy" className="text-gray-500 hover:text-[#48195d] transition-colors">
             Privacy policy
           </a>
-          <a href="#" className="text-gray-500 hover:text-[#48195d] transition-colors">
+          <a href="/terms" className="text-gray-500 hover:text-[#48195d] transition-colors">
             Terms of service
           </a>
-          <a href="#" className="text-gray-500 hover:text-[#48195d] transition-colors">
+          <a href="/contact" className="text-gray-500 hover:text-[#48195d] transition-colors">
             Contact us
           </a>
           <a
