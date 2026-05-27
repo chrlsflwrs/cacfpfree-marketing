@@ -14,9 +14,9 @@ const faqs = [
       "No. Staff interact entirely through text messages. The app exists only as a backup for directors who need to manage settings, review past months, or pull reports for auditors.",
   },
   {
-    question: "Will auditors accept this format?",
+    question: "Are reports audit-ready?",
     answer:
-      "Yes. The PDF report uses the same layout and calculations the state already trusts. The auditor sees a completed, signed form — they don't know or care that staff confirmed via text.",
+      "Yes. The PDF report includes the same required fields & information from the official state agency form.",
   },
   {
     question: "What happens if a staff member doesn't respond?",
