@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ReceiptsHero() {
   return (
     <section
@@ -24,12 +26,13 @@ export default function ReceiptsHero() {
               you audit-ready — all month, every month.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a
+              {/* TODO: Update to deployed receipts app URL when ready */}
+              <Link
                 href="/receipts"
                 className="w-full sm:w-auto px-7 py-3.5 text-base font-semibold text-white bg-[#E8734A] rounded-lg hover:bg-[#d4663f] transition-colors min-h-[44px] flex items-center justify-center"
               >
                 Start free — upload your first receipt
-              </a>
+              </Link>
               <a
                 href="#how-it-works"
                 style={{

@@ -19,6 +19,8 @@ const sponsorFeatures = [
   "Consolidated reports",
 ];
 
+import Link from "next/link";
+
 function CheckIcon() {
   return (
     <span className="text-[#48195d] font-bold shrink-0 mt-0.5" aria-hidden="true">
@@ -73,12 +75,13 @@ export default function ReceiptsPricing() {
                 ))}
               </ul>
 
-              <a
+              {/* TODO: Update to deployed receipts app URL when ready */}
+              <Link
                 href="/receipts"
                 className="w-full py-3 text-sm font-semibold text-center text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
               >
                 Get started free
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -106,12 +109,13 @@ export default function ReceiptsPricing() {
               ))}
             </ul>
 
-            <a
+            {/* TODO: Update to deployed receipts app URL when ready */}
+            <Link
               href="/receipts"
               className="w-full py-3 text-sm font-semibold text-center text-[#48195d] border border-[#48195d] rounded-xl hover:bg-[#fafafc] transition-colors min-h-[44px] flex items-center justify-center"
             >
               Start free, upgrade later
-            </a>
+            </Link>
           </div>
 
           {/* Sponsor tier */}
@@ -136,12 +140,12 @@ export default function ReceiptsPricing() {
               ))}
             </ul>
 
-            <a
-              href="#"
+            <Link
+              href="/contact"
               className="w-full py-3 text-sm font-semibold text-center text-[#48195d] border border-[#48195d] rounded-xl hover:bg-[#fafafc] transition-colors min-h-[44px] flex items-center justify-center"
             >
               Contact us
-            </a>
+            </Link>
           </div>
         </div>
       </div>

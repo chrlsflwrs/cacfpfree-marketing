@@ -1,11 +1,15 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
-const appLinks = [
-  { label: "Time reports", href: "/time-reports" },
-  { label: "Receipts", href: "/receipts" },
-  { label: "CACFP software", href: "/software" },
+type AppLink = { label: string; href: string; external: boolean };
+
+const appLinks: AppLink[] = [
+  { label: "Time reports", href: "https://cacfp-free-tdr.vercel.app/setup", external: true },
+  // TODO: Update to deployed receipts app URL when ready
+  { label: "Receipts", href: "/receipts", external: false },
+  { label: "CACFP software", href: "/software", external: false },
 ];
 
 function AppDropdown({ onClose }: { onClose: () => void }) {
@@ -14,16 +18,27 @@ function AppDropdown({ onClose }: { onClose: () => void }) {
       <p className="px-4 py-1.5 text-[11px] font-semibold text-gray-400 uppercase tracking-wide">
         Choose an app
       </p>
-      {appLinks.map((link) => (
-        <a
-          key={link.href}
-          href={link.href}
-          className="flex items-center px-4 py-2.5 text-sm text-[#1a1a2e] hover:bg-[#fafafc] hover:text-[#48195d] transition-colors"
-          onClick={onClose}
-        >
-          {link.label}
-        </a>
-      ))}
+      {appLinks.map((link) =>
+        link.external ? (
+          <a
+            key={link.href}
+            href={link.href}
+            className="flex items-center px-4 py-2.5 text-sm text-[#1a1a2e] hover:bg-[#fafafc] hover:text-[#48195d] transition-colors"
+            onClick={onClose}
+          >
+            {link.label}
+          </a>
+        ) : (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="flex items-center px-4 py-2.5 text-sm text-[#1a1a2e] hover:bg-[#fafafc] hover:text-[#48195d] transition-colors"
+            onClick={onClose}
+          >
+            {link.label}
+          </Link>
+        )
+      )}
     </div>
   );
 }

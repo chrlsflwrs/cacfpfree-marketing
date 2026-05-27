@@ -65,7 +65,7 @@ export default function TimeReportsPricing() {
               </ul>
 
               <a
-                href="/time-reports"
+                href="https://cacfp-free-tdr.vercel.app/setup"
                 className="w-full py-3 text-sm font-semibold text-center text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
               >
                 Get started free
@@ -103,7 +103,7 @@ export default function TimeReportsPricing() {
             </ul>
 
             <a
-              href="/time-reports"
+              href="https://cacfp-free-tdr.vercel.app/setup"
               className="w-full py-3 text-sm font-semibold text-center text-[#48195d] border border-[#48195d] rounded-xl hover:bg-[#fafafc] transition-colors min-h-[44px] flex items-center justify-center"
             >
               Start free, upgrade anytime

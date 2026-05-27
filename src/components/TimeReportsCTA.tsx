@@ -16,7 +16,7 @@ export default function TimeReportsCTA() {
           morning.
         </p>
         <a
-          href="/time-reports"
+          href="https://cacfp-free-tdr.vercel.app/setup"
           className="flex sm:inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#E8734A] rounded-xl hover:bg-[#d4663f] transition-colors min-h-[44px]"
         >
           Start free — no credit card needed

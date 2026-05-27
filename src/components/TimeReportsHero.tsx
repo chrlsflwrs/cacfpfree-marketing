@@ -25,7 +25,7 @@ export default function TimeReportsHero() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <a
-                href="/time-reports"
+                href="https://cacfp-free-tdr.vercel.app/setup"
                 className="w-full sm:w-auto px-7 py-3.5 text-base font-semibold text-white bg-[#E8734A] rounded-lg hover:bg-[#d4663f] transition-colors min-h-[44px] flex items-center justify-center"
               >
                 Start free — takes 5 minutes

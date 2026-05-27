@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type BadgeStyle = {
   label: string;
   bg: string;
@@ -12,6 +14,7 @@ type Product = {
   features: string[];
   cta: string;
   ctaHref: string;
+  ctaExternal: boolean;
   ctaVariant: "solid" | "outline";
   priceNote: string;
   featured: boolean;
@@ -31,7 +34,8 @@ const products: Product[] = [
       "Free for up to 2 staff",
     ],
     cta: "Start free →",
-    ctaHref: "/time-reports",
+    ctaHref: "https://cacfp-free-tdr.vercel.app/setup",
+    ctaExternal: true,
     ctaVariant: "solid",
     priceNote: "Free forever · Paid plans from $X/mo",
     featured: true,
@@ -49,7 +53,9 @@ const products: Product[] = [
       "Monthly export reports",
     ],
     cta: "Start free →",
+    // TODO: Update to deployed receipts app URL when ready
     ctaHref: "/receipts",
+    ctaExternal: false,
     ctaVariant: "solid",
     priceNote: "Free tier available · Paid from $X/mo",
     featured: false,
@@ -72,11 +78,19 @@ const products: Product[] = [
     ],
     cta: "Learn more",
     ctaHref: "/software",
+    ctaExternal: false,
     ctaVariant: "solid",
     priceNote: "Free tier available · Paid from $X/mo",
     featured: false,
   },
 ];
+
+const ctaClass = (variant: "solid" | "outline") =>
+  `w-full py-3 text-sm font-semibold text-center rounded-lg transition-colors min-h-[44px] flex items-center justify-center ${
+    variant === "solid"
+      ? "bg-[#48195d] text-white hover:bg-[#3a1449]"
+      : "border border-[#48195d] text-[#48195d] hover:bg-[#fafafc]"
+  }`;
 
 export default function ProductCards() {
   return (
@@ -145,16 +159,15 @@ export default function ProductCards() {
                 </ul>
 
                 {/* CTA button */}
-                <a
-                  href={product.ctaHref}
-                  className={`w-full py-3 text-sm font-semibold text-center rounded-lg transition-colors min-h-[44px] flex items-center justify-center ${
-                    product.ctaVariant === "solid"
-                      ? "bg-[#48195d] text-white hover:bg-[#3a1449]"
-                      : "border border-[#48195d] text-[#48195d] hover:bg-[#fafafc]"
-                  }`}
-                >
-                  {product.cta}
-                </a>
+                {product.ctaExternal ? (
+                  <a href={product.ctaHref} className={ctaClass(product.ctaVariant)}>
+                    {product.cta}
+                  </a>
+                ) : (
+                  <Link href={product.ctaHref} className={ctaClass(product.ctaVariant)}>
+                    {product.cta}
+                  </Link>
+                )}
 
                 {/* Price note */}
                 <p className="mt-3 text-xs text-center text-gray-400">

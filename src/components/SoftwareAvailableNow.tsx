@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function SoftwareAvailableNow() {
   return (
     <section id="available-now" className="py-20 px-4 bg-white">
@@ -24,7 +26,7 @@ export default function SoftwareAvailableNow() {
               signatures, and audit-ready PDFs. Free for up to 2 staff.
             </p>
             <a
-              href="/time-reports"
+              href="https://cacfp-free-tdr.vercel.app/setup"
               className="text-sm font-semibold text-[#E8734A] hover:underline"
             >
               Start free now →
@@ -40,12 +42,13 @@ export default function SoftwareAvailableNow() {
               Snap a photo, AI handles the rest. Organized by month,
               categorized for compliance, ready for any audit.
             </p>
-            <a
+            {/* TODO: Update to deployed receipts app URL when ready */}
+            <Link
               href="/receipts"
               className="text-sm font-semibold text-[#E8734A] hover:underline"
             >
               Start free now →
-            </a>
+            </Link>
           </div>
         </div>
       </div>

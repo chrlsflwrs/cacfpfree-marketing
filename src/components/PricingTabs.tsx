@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 type Tab = "time-reports" | "receipts" | "software";
 
@@ -73,7 +74,7 @@ function TimeReportsCards() {
             ))}
           </ul>
           <a
-            href="/time-reports"
+            href="https://cacfp-free-tdr.vercel.app/setup"
             className="w-full py-3 text-sm font-semibold text-center text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
           >
             Get started free
@@ -99,7 +100,7 @@ function TimeReportsCards() {
           ))}
         </ul>
         <a
-          href="/time-reports"
+          href="https://cacfp-free-tdr.vercel.app/setup"
           className="w-full py-3 text-sm font-semibold text-center text-[#48195d] border border-[#48195d] rounded-xl hover:bg-[#fafafc] transition-colors min-h-[44px] flex items-center justify-center"
         >
           Start free, upgrade anytime
@@ -115,12 +116,12 @@ function TimeReportsCards() {
           Multi-site sponsors or large centers — let&apos;s talk about what you
           need.
         </p>
-        <a
+        <Link
           href="/contact"
           className="w-full py-3 text-sm font-semibold text-center text-[#E8734A] border border-[#E8734A] rounded-xl hover:bg-orange-50 transition-colors min-h-[44px] flex items-center justify-center"
         >
           Contact us
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -171,12 +172,13 @@ function ReceiptsCards() {
               </li>
             ))}
           </ul>
-          <a
+          {/* TODO: Update to deployed receipts app URL when ready */}
+          <Link
             href="/receipts"
             className="w-full py-3 text-sm font-semibold text-center text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
           >
             Get started free
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -197,12 +199,13 @@ function ReceiptsCards() {
             </li>
           ))}
         </ul>
-        <a
+        {/* TODO: Update to deployed receipts app URL when ready */}
+        <Link
           href="/receipts"
           className="w-full py-3 text-sm font-semibold text-center text-[#48195d] border border-[#48195d] rounded-xl hover:bg-[#fafafc] transition-colors min-h-[44px] flex items-center justify-center"
         >
           Start free, upgrade later
-        </a>
+        </Link>
       </div>
 
       {/* Sponsor */}
@@ -222,12 +225,12 @@ function ReceiptsCards() {
             </li>
           ))}
         </ul>
-        <a
+        <Link
           href="/contact"
           className="w-full py-3 text-sm font-semibold text-center text-[#E8734A] border border-[#E8734A] rounded-xl hover:bg-orange-50 transition-colors min-h-[44px] flex items-center justify-center"
         >
           Contact us
-        </a>
+        </Link>
       </div>
     </div>
   );

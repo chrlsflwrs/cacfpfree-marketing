@@ -2,11 +2,22 @@
 
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-const appLinks = [
-  { label: "Time reports", href: "/time-reports" },
-  { label: "Receipts", href: "/receipts" },
-  { label: "CACFP software", href: "/software" },
+type AppLink = { label: string; href: string; external: boolean };
+
+const loginLinks: AppLink[] = [
+  { label: "Time reports", href: "https://cacfp-free-tdr.vercel.app/login", external: true },
+  // TODO: Update to deployed receipts app URL when ready
+  { label: "Receipts", href: "/receipts", external: false },
+  { label: "CACFP software", href: "/software", external: false },
+];
+
+const signupLinks: AppLink[] = [
+  { label: "Time reports", href: "https://cacfp-free-tdr.vercel.app/setup", external: true },
+  // TODO: Update to deployed receipts app URL when ready
+  { label: "Receipts", href: "/receipts", external: false },
+  { label: "CACFP software", href: "/software", external: false },
 ];
 
 const navLinks = [
@@ -17,22 +28,33 @@ const navLinks = [
   { label: "Pricing", href: "/pricing" },
 ];
 
-function AppDropdown({ onClose }: { onClose: () => void }) {
+function AppDropdown({ links, onClose }: { links: AppLink[]; onClose: () => void }) {
   return (
     <div className="absolute right-0 top-full mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg z-50 py-2 overflow-hidden">
       <p className="px-4 py-1.5 text-[11px] font-semibold text-gray-400 uppercase tracking-wide">
         Choose an app
       </p>
-      {appLinks.map((link) => (
-        <a
-          key={link.href}
-          href={link.href}
-          className="flex items-center px-4 py-2.5 text-sm text-[#1a1a2e] hover:bg-[#fafafc] hover:text-[#48195d] transition-colors"
-          onClick={onClose}
-        >
-          {link.label}
-        </a>
-      ))}
+      {links.map((link) =>
+        link.external ? (
+          <a
+            key={link.href}
+            href={link.href}
+            className="flex items-center px-4 py-2.5 text-sm text-[#1a1a2e] hover:bg-[#fafafc] hover:text-[#48195d] transition-colors"
+            onClick={onClose}
+          >
+            {link.label}
+          </a>
+        ) : (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="flex items-center px-4 py-2.5 text-sm text-[#1a1a2e] hover:bg-[#fafafc] hover:text-[#48195d] transition-colors"
+            onClick={onClose}
+          >
+            {link.label}
+          </Link>
+        )
+      )}
     </div>
   );
 }
@@ -40,9 +62,11 @@ function AppDropdown({ onClose }: { onClose: () => void }) {
 function ButtonWithDropdown({
   label,
   variant,
+  links,
 }: {
   label: string;
   variant: "outline" | "solid";
+  links: AppLink[];
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -69,7 +93,7 @@ function ButtonWithDropdown({
       >
         {label}
       </button>
-      {open && <AppDropdown onClose={() => setOpen(false)} />}
+      {open && <AppDropdown links={links} onClose={() => setOpen(false)} />}
     </div>
   );
 }
@@ -109,7 +133,7 @@ export default function Navbar() {
 
           {/* Desktop buttons */}
           <div className="hidden lg:flex items-center gap-2 shrink-0">
-            <ButtonWithDropdown label="Log in" variant="outline" />
+            <ButtonWithDropdown label="Log in" variant="outline" links={loginLinks} />
             {pathname === "/software" ? (
               <a
                 href="#waitlist"
@@ -118,7 +142,7 @@ export default function Navbar() {
                 Join the waitlist
               </a>
             ) : (
-              <ButtonWithDropdown label="Sign up free" variant="solid" />
+              <ButtonWithDropdown label="Sign up free" variant="solid" links={signupLinks} />
             )}
           </div>
 
@@ -132,7 +156,7 @@ export default function Navbar() {
                 Join the waitlist
               </a>
             ) : (
-              <ButtonWithDropdown label="Sign up free" variant="solid" />
+              <ButtonWithDropdown label="Sign up free" variant="solid" links={signupLinks} />
             )}
             <button
               onClick={() => setMobileOpen((v) => !v)}
@@ -199,13 +223,13 @@ export default function Navbar() {
           </nav>
           <div className="px-4 pb-4 pt-2 border-t border-gray-100 flex flex-col gap-2">
             <a
-              href="/time-reports"
+              href="https://cacfp-free-tdr.vercel.app/login"
               className="w-full px-4 py-3 text-sm font-medium text-center text-[#48195d] border border-[#48195d] rounded-lg min-h-[44px] flex items-center justify-center"
             >
               Log in
             </a>
             <a
-              href="/time-reports"
+              href="https://cacfp-free-tdr.vercel.app/setup"
               className="w-full px-4 py-3 text-sm font-medium text-center text-white bg-[#48195d] rounded-lg min-h-[44px] flex items-center justify-center hover:bg-[#3a1449] transition-colors"
             >
               Sign up free

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ReceiptsCTA() {
   return (
     <section
@@ -15,12 +17,13 @@ export default function ReceiptsCTA() {
           Upload your first receipt in under a minute. Free to start — no
           credit card required.
         </p>
-        <a
+        {/* TODO: Update to deployed receipts app URL when ready */}
+        <Link
           href="/receipts"
           className="flex sm:inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#E8734A] rounded-xl hover:bg-[#d4663f] transition-colors min-h-[44px]"
         >
           Start free now
-        </a>
+        </Link>
       </div>
     </section>
   );
