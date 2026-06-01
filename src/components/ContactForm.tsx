@@ -5,14 +5,17 @@ import { useState } from "react";
 type FieldErrors = {
   name?: string;
   email?: string;
+  app?: string;
   message?: string;
 };
+
+const APP_OPTIONS = ["Time Reports", "Receipts", "CACFP Software"];
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
-  const [values, setValues] = useState({ name: "", email: "", message: "" });
+  const [values, setValues] = useState({ name: "", email: "", app: "", message: "" });
 
   function validate(): FieldErrors {
     const errs: FieldErrors = {};
@@ -20,6 +23,7 @@ export default function ContactForm() {
     if (!values.email.trim()) errs.email = "Email is required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))
       errs.email = "Enter a valid email address";
+    if (!values.app) errs.app = "Please select an app";
     if (!values.message.trim()) errs.message = "Message is required";
     return errs;
   }
@@ -76,9 +80,10 @@ export default function ContactForm() {
     >
       <input type="hidden" name="form-name" value="contact" />
 
+      {/* Name */}
       <div>
         <label htmlFor="contact-name" className="block text-sm font-medium text-[#1a1a2e] mb-1.5">
-          Your name
+          Your name <span className="text-red-500">*</span>
         </label>
         <input
           id="contact-name"
@@ -97,9 +102,10 @@ export default function ContactForm() {
         {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
       </div>
 
+      {/* Email */}
       <div>
         <label htmlFor="contact-email" className="block text-sm font-medium text-[#1a1a2e] mb-1.5">
-          Email address
+          Email address <span className="text-red-500">*</span>
         </label>
         <input
           id="contact-email"
@@ -118,12 +124,36 @@ export default function ContactForm() {
         {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
       </div>
 
+      {/* App dropdown */}
       <div>
-        <label
-          htmlFor="contact-message"
-          className="block text-sm font-medium text-[#1a1a2e] mb-1.5"
+        <label htmlFor="contact-app" className="block text-sm font-medium text-[#1a1a2e] mb-1.5">
+          Which CACFP app are you interested in? <span className="text-red-500">*</span>
+        </label>
+        <select
+          id="contact-app"
+          name="app"
+          required
+          value={values.app}
+          onChange={(e) => {
+            setValues((v) => ({ ...v, app: e.target.value }));
+            setErrors((er) => ({ ...er, app: undefined }));
+          }}
+          className={`w-full px-4 py-3 text-sm border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#48195d] focus:border-[#48195d] min-h-[44px] transition-colors appearance-none cursor-pointer ${
+            errors.app ? "border-red-400" : "border-[#e5e7eb]"
+          } ${values.app ? "text-[#1a1a2e]" : "text-gray-400"}`}
         >
-          How can we help?
+          <option value="" disabled>Select an app…</option>
+          {APP_OPTIONS.map((opt) => (
+            <option key={opt} value={opt} className="text-[#1a1a2e]">{opt}</option>
+          ))}
+        </select>
+        {errors.app && <p className="text-red-500 text-xs mt-1">{errors.app}</p>}
+      </div>
+
+      {/* Message */}
+      <div>
+        <label htmlFor="contact-message" className="block text-sm font-medium text-[#1a1a2e] mb-1.5">
+          How can we help? <span className="text-red-500">*</span>
         </label>
         <textarea
           id="contact-message"
