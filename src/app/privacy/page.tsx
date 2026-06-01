@@ -41,9 +41,7 @@ export default function PrivacyPage() {
           <p className="text-[#374151] leading-relaxed mb-10">
             At CACFP Free (operated by CACFP Solutions LLC), we take your privacy
             seriously. This policy explains what information we collect, how we
-            use it, and your rights regarding your data. We&apos;ve written it
-            in plain English &mdash; you shouldn&apos;t need a lawyer to understand
-            how your information is handled.
+            use it, and your rights regarding your data.
           </p>
 
           <Section title="What information we collect">

@@ -88,21 +88,31 @@ export default function PricingComparison() {
           What&apos;s included at every level
         </h2>
 
-        <p className="text-xs text-gray-400 text-right mb-2 sm:hidden">← Scroll to see all features →</p>
+        <p className="text-xs text-gray-400 text-center mb-2 sm:hidden">← Scroll to see all features →</p>
         <div className="overflow-x-auto rounded-2xl border border-gray-200">
-          <table className="w-full text-sm min-w-[600px] bg-white">
+          <table className="w-full text-sm bg-white" style={{ minWidth: "500px" }}>
             <thead>
               <tr className="bg-[#fafafc] border-b border-gray-200">
-                <th className="text-left px-6 py-4 font-semibold text-[#1a1a2e] w-[40%]">
+                <th
+                  className="text-left px-4 py-4 font-semibold text-[#1a1a2e]"
+                  style={{
+                    position: "sticky",
+                    left: 0,
+                    background: "#fafafc",
+                    zIndex: 2,
+                    minWidth: "140px",
+                    boxShadow: "2px 0 4px rgba(0,0,0,0.06)",
+                  }}
+                >
                   Feature
                 </th>
-                <th className="text-center px-4 py-4 font-semibold text-[#1a1a2e] w-[20%]">
+                <th className="text-center px-4 py-4 font-semibold text-[#1a1a2e]" style={{ minWidth: "100px" }}>
                   Free
                 </th>
-                <th className="text-center px-4 py-4 font-semibold text-[#1a1a2e] w-[20%]">
+                <th className="text-center px-4 py-4 font-semibold text-[#1a1a2e]" style={{ minWidth: "100px" }}>
                   Paid
                 </th>
-                <th className="text-center px-4 py-4 font-semibold text-[#1a1a2e] w-[20%]">
+                <th className="text-center px-4 py-4 font-semibold text-[#1a1a2e]" style={{ minWidth: "100px" }}>
                   Sponsor
                 </th>
               </tr>
@@ -113,7 +123,13 @@ export default function PricingComparison() {
                   <tr className="bg-[#fafafc] border-t border-b border-gray-200">
                     <td
                       colSpan={4}
-                      className="px-6 py-3 text-xs font-bold text-[#48195d] uppercase tracking-widest"
+                      className="px-4 py-3 text-xs font-bold text-[#48195d] uppercase tracking-widest"
+                      style={{
+                        position: "sticky",
+                        left: 0,
+                        background: "#fafafc",
+                        zIndex: 1,
+                      }}
                     >
                       {section.title}
                     </td>
@@ -123,7 +139,18 @@ export default function PricingComparison() {
                       key={row.feature}
                       className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
                     >
-                      <td className="px-6 py-4 text-[#1a1a2e]">{row.feature}</td>
+                      <td
+                        className="px-4 py-4 text-[#1a1a2e]"
+                        style={{
+                          position: "sticky",
+                          left: 0,
+                          background: "white",
+                          zIndex: 1,
+                          boxShadow: "2px 0 4px rgba(0,0,0,0.06)",
+                        }}
+                      >
+                        {row.feature}
+                      </td>
                       <td className="px-4 py-4 text-center">
                         <Cell value={row.free} />
                       </td>
@@ -142,7 +169,13 @@ export default function PricingComparison() {
               <tr className="bg-[#fafafc] border-t border-b border-gray-200">
                 <td
                   colSpan={4}
-                  className="px-6 py-3 text-xs font-bold text-[#48195d] uppercase tracking-widest"
+                  className="px-4 py-3 text-xs font-bold text-[#48195d] uppercase tracking-widest"
+                  style={{
+                    position: "sticky",
+                    left: 0,
+                    background: "#fafafc",
+                    zIndex: 1,
+                  }}
                 >
                   CACFP SOFTWARE (coming soon)
                 </td>
@@ -152,7 +185,18 @@ export default function PricingComparison() {
                   key={row}
                   className={`border-b border-gray-100 ${i === softwareRows.length - 1 ? "border-b-0" : ""}`}
                 >
-                  <td className="px-6 py-4 text-[#1a1a2e]">{row}</td>
+                  <td
+                    className="px-4 py-4 text-[#1a1a2e]"
+                    style={{
+                      position: "sticky",
+                      left: 0,
+                      background: "white",
+                      zIndex: 1,
+                      boxShadow: "2px 0 4px rgba(0,0,0,0.06)",
+                    }}
+                  >
+                    {row}
+                  </td>
                   <td
                     colSpan={3}
                     className="px-4 py-4 text-center text-gray-400 italic text-sm"

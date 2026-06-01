@@ -44,10 +44,9 @@ export default function TimeReportsHero() {
           </div>
 
           {/* Right column — SMS phone mockup */}
-          <div className="w-full lg:w-2/5 max-w-sm mx-auto lg:mx-0">
+          <div className="w-full lg:w-2/5 max-w-[320px] mx-auto lg:mx-0">
             <div
               style={{
-                transform: "rotate(2deg)",
                 boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
               }}
               className="bg-white rounded-[20px] overflow-hidden"
