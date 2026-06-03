@@ -11,9 +11,12 @@ type FieldErrors = {
 
 const APP_OPTIONS = ["Time Reports", "Receipts", "CACFP Software"];
 
+const CONTACT_API_URL = "https://cacfp-free-tdr.vercel.app/api/forms/contact";
+
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [values, setValues] = useState({ name: "", email: "", app: "", message: "" });
 
@@ -36,20 +39,28 @@ export default function ContactForm() {
       return;
     }
     setSubmitting(true);
+    setSubmitError(null);
     try {
-      await fetch("/", {
+      const { name, email, app, message } = values;
+      const res = await fetch(CONTACT_API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "contact",
-          ...values,
-        }).toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, app, message }),
       });
+      const data = await res.json().catch(() => null);
+      if (res.ok && data?.success) {
+        setSubmitted(true);
+      } else {
+        setSubmitError(
+          "Something went wrong. Please email us directly at support@cacfpfree.com"
+        );
+      }
     } catch {
-      // Submission attempted — show success regardless to not block the user
+      setSubmitError(
+        "Something went wrong. Please email us directly at support@cacfpfree.com"
+      );
     } finally {
       setSubmitting(false);
-      setSubmitted(true);
     }
   }
 
@@ -70,16 +81,7 @@ export default function ContactForm() {
     }`;
 
   return (
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      onSubmit={handleSubmit}
-      noValidate
-      className="space-y-5"
-    >
-      <input type="hidden" name="form-name" value="contact" />
-
+    <form onSubmit={handleSubmit} noValidate className="space-y-5">
       {/* Name */}
       <div>
         <label htmlFor="contact-name" className="block text-sm font-medium text-[#1a1a2e] mb-1.5">
@@ -174,6 +176,12 @@ export default function ContactForm() {
           <p className="text-red-500 text-xs mt-1">{errors.message}</p>
         )}
       </div>
+
+      {submitError && (
+        <p className="text-red-600 text-sm" role="alert">
+          {submitError}
+        </p>
+      )}
 
       <button
         type="submit"

@@ -10,19 +10,6 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      {/* Hidden form for Netlify detection on static build */}
-      <form name="contact" data-netlify="true" hidden>
-        <input type="hidden" name="form-name" value="contact" />
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <select name="app">
-          <option value="Time Reports" />
-          <option value="Receipts" />
-          <option value="CACFP Software" />
-        </select>
-        <textarea name="message" />
-      </form>
-
       {/* Purple banner header */}
       <div
         style={{

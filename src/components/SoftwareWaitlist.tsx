@@ -7,9 +7,12 @@ type FieldErrors = {
   email?: string;
 };
 
+const WAITLIST_API_URL = "https://cacfp-free-tdr.vercel.app/api/forms/waitlist";
+
 export default function SoftwareWaitlist() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [values, setValues] = useState({ name: "", email: "" });
 
@@ -30,21 +33,28 @@ export default function SoftwareWaitlist() {
       return;
     }
     setSubmitting(true);
+    setSubmitError(null);
     try {
-      await fetch("/", {
+      const { name, email } = values;
+      const res = await fetch(WAITLIST_API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "waitlist",
-          interest: "CACFP Software waitlist",
-          ...values,
-        }).toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, interest: "CACFP Software" }),
       });
+      const data = await res.json().catch(() => null);
+      if (res.ok && data?.success) {
+        setSubmitted(true);
+      } else {
+        setSubmitError(
+          "Something went wrong. Please try again or email us at support@cacfpfree.com"
+        );
+      }
     } catch {
-      // Submission attempted — show success regardless to not block the user
+      setSubmitError(
+        "Something went wrong. Please try again or email us at support@cacfpfree.com"
+      );
     } finally {
       setSubmitting(false);
-      setSubmitted(true);
     }
   }
 
@@ -66,14 +76,6 @@ export default function SoftwareWaitlist() {
           just one email when it&apos;s time.
         </p>
 
-        {/* Hidden form for Netlify detection on static build */}
-        <form name="waitlist" data-netlify="true" hidden>
-          <input type="hidden" name="form-name" value="waitlist" />
-          <input type="hidden" name="interest" value="CACFP Software waitlist" />
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-        </form>
-
         {submitted ? (
           <div className="bg-[#f0fdf4] border border-[#bbf7d0] rounded-2xl px-6 py-6 text-center">
             <p className="text-[#16a34a] font-semibold text-xl mb-1">
@@ -84,21 +86,7 @@ export default function SoftwareWaitlist() {
             </p>
           </div>
         ) : (
-          <form
-            name="waitlist"
-            method="POST"
-            data-netlify="true"
-            onSubmit={handleSubmit}
-            noValidate
-            className="w-full"
-          >
-            <input type="hidden" name="form-name" value="waitlist" />
-            <input
-              type="hidden"
-              name="interest"
-              value="CACFP Software waitlist"
-            />
-
+          <form onSubmit={handleSubmit} noValidate className="w-full">
             <div className="flex flex-col gap-3 w-full max-w-lg mx-auto">
               <div className="text-left">
                 <label
@@ -159,6 +147,12 @@ export default function SoftwareWaitlist() {
                   </p>
                 )}
               </div>
+
+              {submitError && (
+                <p className="text-red-300 text-sm text-left" role="alert">
+                  {submitError}
+                </p>
+              )}
 
               <button
                 type="submit"
