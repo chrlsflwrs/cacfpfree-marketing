@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 export default function ReceiptsHero() {
   return (
@@ -14,6 +13,10 @@ export default function ReceiptsHero() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left column — text */}
           <div className="flex-1 lg:w-[55%] text-center lg:text-left">
+            {/* Coming soon badge */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide bg-[#fffee5] text-[#ca8a04] mb-6">
+              ⏰ Coming Soon
+            </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-5">
               Snap a photo. AI handles the rest.
             </h1>
@@ -27,12 +30,12 @@ export default function ReceiptsHero() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               {/* TODO: Update to deployed receipts app URL when ready */}
-              <Link
-                href="/receipts"
+              <a
+                href="#waitlist"
                 className="w-full sm:w-auto px-7 py-3.5 text-base font-semibold text-white bg-[#E8734A] rounded-lg hover:bg-[#d4663f] transition-colors min-h-[44px] flex items-center justify-center"
               >
-                Start free — upload your first receipt
-              </Link>
+                Join the waitlist
+              </a>
               <a
                 href="#how-it-works"
                 style={{

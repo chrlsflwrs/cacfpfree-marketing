@@ -7,7 +7,7 @@ import ReceiptsMenuMatch from "@/components/ReceiptsMenuMatch";
 import ReceiptsAudience from "@/components/ReceiptsAudience";
 import ReceiptsPricing from "@/components/ReceiptsPricing";
 import ReceiptsFAQ from "@/components/ReceiptsFAQ";
-import ReceiptsCTA from "@/components/ReceiptsCTA";
+import ReceiptsWaitlist from "@/components/ReceiptsWaitlist";
 
 export const metadata: Metadata = {
   title: { absolute: "CACFP Receipts — AI-powered receipt scanning for daycares" },
@@ -26,7 +26,7 @@ export default function ReceiptsPage() {
       <ReceiptsAudience />
       <ReceiptsPricing />
       <ReceiptsFAQ />
-      <ReceiptsCTA />
+      <ReceiptsWaitlist />
     </>
   );
 }
