@@ -86,7 +86,7 @@ export default function ContactForm() {
       <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
         <p className="text-green-700 font-semibold text-lg mb-1">Message sent!</p>
         <p className="text-gray-600 text-sm">
-          Thanks! We&apos;ll get back to you within 1 business day.
+          Thanks! We&apos;ll get back to you shortly.
         </p>
       </div>
     );

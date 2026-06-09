@@ -55,7 +55,7 @@ const products: Product[] = [
     cta: "Learn more",
     ctaHref: "/receipts",
     ctaExternal: false,
-    ctaVariant: "outline",
+    ctaVariant: "solid",
     priceNote: "Free tier available · Paid from $X/mo",
     featured: false,
   },
