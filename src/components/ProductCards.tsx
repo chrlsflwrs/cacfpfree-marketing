@@ -41,7 +41,7 @@ const products: Product[] = [
     featured: true,
   },
   {
-    badge: { label: "New", bg: "bg-blue-100", text: "text-blue-700" },
+    badge: { label: "Coming soon", bg: "bg-amber-100", text: "text-amber-700" },
     icon: "🧾",
     name: "CACFP Receipts",
     description:
@@ -52,11 +52,10 @@ const products: Product[] = [
       "Menu vs. receipt matching",
       "Monthly export reports",
     ],
-    cta: "Start free →",
-    // TODO: Update to deployed receipts app URL when ready
+    cta: "Learn more",
     ctaHref: "/receipts",
     ctaExternal: false,
-    ctaVariant: "solid",
+    ctaVariant: "outline",
     priceNote: "Free tier available · Paid from $X/mo",
     featured: false,
   },

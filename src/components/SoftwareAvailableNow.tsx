@@ -47,7 +47,7 @@ export default function SoftwareAvailableNow() {
               href="/receipts"
               className="text-sm font-semibold text-[#E8734A] hover:underline"
             >
-              Start free now →
+              Learn more →
             </Link>
           </div>
         </div>

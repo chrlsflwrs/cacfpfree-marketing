@@ -11,6 +11,23 @@ type FieldErrors = {
 
 const APP_OPTIONS = ["Time Reports", "Receipts", "CACFP Software"];
 
+/*
+  EMAIL ROUTING: This form POSTs to the TDR app backend (a SEPARATE codebase),
+  not to this marketing repo. Submissions are emailed from there.
+  To change the destination address to support@cacfpfree.com, update the email
+  "to" field in the TDR repo at: src/app/api/forms/contact/route.ts
+  (the route that handles CONTACT_API_URL below). It cannot be changed here.
+*/
+
+/*
+  IMPORTANT (for Charles): The second auto-reply message ("support is only on the
+  free plan") is coming from Intercom, not from this form. To stop it:
+  Go to Intercom → Settings → Inbox → Auto messages or Rules →
+  find the rule sending that free plan message → disable or scope it
+  to exclude contact form submissions.
+*/
+
+// Routes to support@cacfpfree.com — see the TDR API route note above.
 const CONTACT_API_URL = "https://cacfp-free-tdr.vercel.app/api/forms/contact";
 
 export default function ContactForm() {
@@ -69,7 +86,7 @@ export default function ContactForm() {
       <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
         <p className="text-green-700 font-semibold text-lg mb-1">Message sent!</p>
         <p className="text-gray-600 text-sm">
-          Thanks! We&apos;ll get back to you shortly.
+          Thanks! We&apos;ll get back to you within 1 business day.
         </p>
       </div>
     );

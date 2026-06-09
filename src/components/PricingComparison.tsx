@@ -61,17 +61,15 @@ const sections: Section[] = [
       { feature: "Multi-site management", free: "dash", paid: "dash", sponsor: "check" },
     ],
   },
-  {
-    title: "CACFP RECEIPTS",
-    rows: [
-      { feature: "AI receipt scanning", free: "check", paid: "check", sponsor: "check" },
-      { feature: "Auto-categorization", free: "check", paid: "check", sponsor: "check" },
-      { feature: "Monthly summaries", free: "check", paid: "check", sponsor: "check" },
-      { feature: "Receipts per month", free: "Up to X", paid: "Unlimited", sponsor: "Unlimited" },
-      { feature: "Menu vs. receipt matching", free: "dash", paid: "check", sponsor: "check" },
-      { feature: "Multi-site dashboard", free: "dash", paid: "dash", sponsor: "check" },
-    ],
-  },
+];
+
+const receiptsRows = [
+  "AI receipt scanning",
+  "Auto-categorization",
+  "Monthly summaries",
+  "Receipts per month",
+  "Menu vs. receipt matching",
+  "Multi-site dashboard",
 ];
 
 const softwareRows = [
@@ -163,6 +161,47 @@ export default function PricingComparison() {
                     </tr>
                   ))}
                 </Fragment>
+              ))}
+
+              {/* Receipts — coming soon */}
+              <tr className="bg-[#fafafc] border-t border-b border-gray-200">
+                <td
+                  colSpan={4}
+                  className="px-4 py-3 text-xs font-bold text-[#48195d] uppercase tracking-widest"
+                  style={{
+                    position: "sticky",
+                    left: 0,
+                    background: "#fafafc",
+                    zIndex: 1,
+                  }}
+                >
+                  CACFP RECEIPTS (coming soon)
+                </td>
+              </tr>
+              {receiptsRows.map((row, i) => (
+                <tr
+                  key={row}
+                  className="border-b border-gray-100"
+                >
+                  <td
+                    className="px-4 py-4 text-[#1a1a2e]"
+                    style={{
+                      position: "sticky",
+                      left: 0,
+                      background: "white",
+                      zIndex: 1,
+                      boxShadow: "2px 0 4px rgba(0,0,0,0.06)",
+                    }}
+                  >
+                    {row}
+                  </td>
+                  <td
+                    colSpan={3}
+                    className="px-4 py-4 text-center text-gray-400 italic text-sm"
+                  >
+                    {i === 0 ? "Pricing announced at launch" : ""}
+                  </td>
+                </tr>
               ))}
 
               {/* Software — coming soon */}

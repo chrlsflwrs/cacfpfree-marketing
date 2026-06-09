@@ -127,110 +127,32 @@ function TimeReportsCards() {
   );
 }
 
-function ReceiptsCards() {
-  const freeFeatures = [
-    "Up to X receipts/mo",
-    "AI extraction",
-    "Monthly summary",
-    "Single-site",
-  ];
-  const proFeatures = [
-    "Everything in free",
-    "XX receipts",
-    "Menu matching",
-    "Detailed exports",
-  ];
-  const sponsorFeatures = [
-    "Everything in pro",
-    "Multi-site dashboard",
-    "Per-site views",
-    "Consolidated reports",
-  ];
-
+function ReceiptsComingSoon() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {/* Free — featured */}
-      <div className="flex flex-col bg-white border-2 border-[#48195d] rounded-2xl overflow-hidden shadow-md hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.12)] transition-all duration-200">
-        <GradientStripe />
-        <div className="flex flex-col flex-1 p-8">
-          <div className="mb-5">
-            <span className="inline-block px-3 py-1 text-xs font-bold text-[#48195d] bg-[#f3e8ff] rounded-full uppercase tracking-wide">
-              Start here
-            </span>
-          </div>
-          <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Free</h3>
-          <div className="flex items-baseline gap-1 mb-2">
-            <span className="text-5xl font-bold text-[#1a1a2e]">$0</span>
-            <span className="text-gray-400 text-sm">/ forever</span>
-          </div>
-          <p className="text-sm text-gray-500 mb-6">For getting started</p>
-          <ul className="flex flex-col gap-3 mb-8 flex-1">
-            {freeFeatures.map((f) => (
-              <li key={f} className="flex items-start gap-2 text-sm text-[#1a1a2e]">
-                <CheckMark />
-                {f}
-              </li>
-            ))}
-          </ul>
-          {/* TODO: Update to deployed receipts app URL when ready */}
-          <Link
-            href="/receipts"
-            className="w-full py-3 text-sm font-semibold text-center text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px] flex items-center justify-center"
-          >
-            Get started free
-          </Link>
+    <div className="flex justify-center">
+      <div className="bg-white border border-gray-200 rounded-2xl p-12 shadow-sm text-center max-w-xl w-full">
+        <div className="mb-5">
+          <span className="inline-block px-3 py-1 text-xs font-bold text-[#ca8a04] bg-[#fffee5] rounded-full uppercase tracking-wide">
+            ⏰ Coming soon
+          </span>
         </div>
-      </div>
-
-      {/* Professional */}
-      <div className="flex flex-col bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.08)] transition-all duration-200">
-        <div className="mb-5 h-6" />
-        <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Professional</h3>
-        <div className="flex items-baseline gap-1 mb-2">
-          <span className="text-5xl font-bold text-[#1a1a2e]">$X</span>
-          <span className="text-gray-400 text-sm">/ month</span>
-        </div>
-        <p className="text-sm text-gray-500 mb-6">For more volume</p>
-        <ul className="flex flex-col gap-3 mb-8 flex-1">
-          {proFeatures.map((f) => (
-            <li key={f} className="flex items-start gap-2 text-sm text-[#1a1a2e]">
-              <CheckMark />
-              {f}
-            </li>
-          ))}
-        </ul>
-        {/* TODO: Update to deployed receipts app URL when ready */}
+        <h3 className="text-2xl font-bold text-[#1a1a2e] mb-3">
+          CACFP Receipts pricing coming soon
+        </h3>
+        <p className="text-sm text-gray-500 mb-8 leading-relaxed">
+          AI-powered receipt scanning, auto-categorization, and menu vs.
+          receipt matching — pricing will be announced at launch. Join the
+          waitlist to be first to know.
+        </p>
         <Link
           href="/receipts"
-          className="w-full py-3 text-sm font-semibold text-center text-[#48195d] border border-[#48195d] rounded-xl hover:bg-[#fafafc] transition-colors min-h-[44px] flex items-center justify-center"
+          className="inline-flex items-center justify-center w-full py-3 text-sm font-semibold text-white bg-[#48195d] rounded-xl hover:bg-[#3a1449] transition-colors min-h-[44px]"
         >
-          Start free, upgrade later
+          Learn more
         </Link>
-      </div>
-
-      {/* Sponsor */}
-      <div className="flex flex-col bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(72,25,93,0.08)] transition-all duration-200">
-        <div className="mb-5 h-6" />
-        <h3 className="text-2xl font-bold text-[#1a1a2e] mb-1">Sponsor</h3>
-        <div className="flex items-baseline gap-1 mb-2">
-          <span className="text-5xl font-bold text-[#1a1a2e]">$X</span>
-          <span className="text-gray-400 text-sm">/ month</span>
-        </div>
-        <p className="text-sm text-gray-500 mb-6">For multi-site orgs</p>
-        <ul className="flex flex-col gap-3 mb-8 flex-1">
-          {sponsorFeatures.map((f) => (
-            <li key={f} className="flex items-start gap-2 text-sm text-[#1a1a2e]">
-              <CheckMark />
-              {f}
-            </li>
-          ))}
-        </ul>
-        <Link
-          href="/contact"
-          className="w-full py-3 text-sm font-semibold text-center text-[#E8734A] border border-[#E8734A] rounded-xl hover:bg-orange-50 transition-colors min-h-[44px] flex items-center justify-center"
-        >
-          Contact us
-        </Link>
+        <p className="mt-4 text-xs text-gray-400 italic">
+          Already using time reports? You&apos;ll get early access.
+        </p>
       </div>
     </div>
   );
@@ -295,7 +217,7 @@ export default function PricingTabs() {
 
         {/* Cards swap on tab click */}
         {activeTab === "time-reports" && <TimeReportsCards />}
-        {activeTab === "receipts" && <ReceiptsCards />}
+        {activeTab === "receipts" && <ReceiptsComingSoon />}
         {activeTab === "software" && <SoftwareComingSoon />}
       </div>
     </section>
