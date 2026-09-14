@@ -191,17 +191,21 @@ export default function SignupForm() {
       const handoffBody = (await handoffResponse.json()) as {
         session_token?: string;
         refresh_token?: string;
+        path?: "new" | "existing";
       };
-      if (!handoffBody.session_token || !handoffBody.refresh_token) {
+      if (!handoffBody.session_token || !handoffBody.refresh_token || !handoffBody.path) {
         setView("error");
         return;
       }
 
       // Fragment only, never a query string -- never sent to any server,
       // same pattern CACFP Free's own password-recovery link already uses.
+      // `path` rides along so /auth/complete can route new vs. existing
+      // accounts correctly -- it's a two-value enum, nothing sensitive.
       const fragment = new URLSearchParams({
         access_token: handoffBody.session_token,
         refresh_token: handoffBody.refresh_token,
+        path: handoffBody.path,
       }).toString();
       window.location.href = `${CACFP_FREE_APP_URL}/auth/complete#${fragment}`;
     } catch {
