@@ -108,6 +108,10 @@ function Field({
 }
 
 export default function SignupForm() {
+  const [testAccessCode, setTestAccessCode] = useState("");
+  const [gateUnlocked, setGateUnlocked] = useState(false);
+  const [gateChecking, setGateChecking] = useState(false);
+  const [gateError, setGateError] = useState("");
   const [values, setValues] = useState<Values>(EMPTY_VALUES);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [view, setView] = useState<ViewState>("form");
@@ -115,6 +119,32 @@ export default function SignupForm() {
   function setField<K extends keyof Values>(key: K, value: Values[K]) {
     setValues((v) => ({ ...v, [key]: value }));
     setErrors((er) => ({ ...er, [key]: undefined }));
+  }
+
+  async function unlockTestingGate(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!testAccessCode.trim()) {
+      setGateError("Enter the testing access code.");
+      return;
+    }
+
+    setGateChecking(true);
+    setGateError("");
+    try {
+      const response = await fetch(`${CACFP_FREE_APP_URL}/api/auth/handoff`, {
+        method: "GET",
+        headers: { "X-CACFP-Signup-Test-Code": testAccessCode.trim() },
+      });
+      if (!response.ok) {
+        setGateError("That testing access code is not valid.");
+        return;
+      }
+      setGateUnlocked(true);
+    } catch {
+      setGateError("We couldn't check the testing access code. Try again.");
+    } finally {
+      setGateChecking(false);
+    }
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -172,6 +202,7 @@ export default function SignupForm() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
+          "X-CACFP-Signup-Test-Code": testAccessCode.trim(),
         },
         body: JSON.stringify({
           email: values.email.trim(),
@@ -211,6 +242,40 @@ export default function SignupForm() {
     } catch {
       setView("error");
     }
+  }
+
+  if (!gateUnlocked) {
+    return (
+      <form onSubmit={unlockTestingGate} className="space-y-5">
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-5">
+          <p className="text-[#1a1a2e] font-semibold text-base mb-1">Private testing only</p>
+          <p className="text-gray-600 text-sm">
+            CACFP Free signup is not open to the public yet. Enter the testing access code to continue.
+          </p>
+        </div>
+        <Field id="signup-test-access-code" label="Testing access code" error={gateError || undefined}>
+          <input
+            id="signup-test-access-code"
+            type="password"
+            required
+            value={testAccessCode}
+            onChange={(e) => {
+              setTestAccessCode(e.target.value);
+              setGateError("");
+            }}
+            className={inputClass(!!gateError)}
+            autoComplete="off"
+          />
+        </Field>
+        <button
+          type="submit"
+          disabled={gateChecking}
+          className="w-full py-3 px-6 text-sm font-semibold text-white bg-[#48195d] rounded-lg hover:bg-[#3a1449] transition-colors min-h-[44px] disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {gateChecking ? "Checking…" : "Continue"}
+        </button>
+      </form>
+    );
   }
 
   if (view === "account_exists") {
