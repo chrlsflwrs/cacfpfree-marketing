@@ -115,6 +115,7 @@ export default function SignupForm() {
   const [values, setValues] = useState<Values>(EMPTY_VALUES);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [view, setView] = useState<ViewState>("form");
+  const [showPassword, setShowPassword] = useState(false);
 
   function setField<K extends keyof Values>(key: K, value: Values[K]) {
     setValues((v) => ({ ...v, [key]: value }));
@@ -376,17 +377,29 @@ export default function SignupForm() {
       </Field>
 
       <Field id="signup-password" label="Password" error={errors.password}>
-        <input
-          id="signup-password"
-          name="password"
-          type="password"
-          required
-          value={values.password}
-          onChange={(e) => setField("password", e.target.value)}
-          className={inputClass(!!errors.password)}
-          placeholder={`At least ${MIN_PASSWORD_LENGTH} characters`}
-          autoComplete="new-password"
-        />
+        <div className="flex items-stretch gap-2">
+          <input
+            id="signup-password"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            required
+            value={values.password}
+            onChange={(e) => setField("password", e.target.value)}
+            className={`${inputClass(!!errors.password)} min-w-0 flex-1`}
+            placeholder={`At least ${MIN_PASSWORD_LENGTH} characters`}
+            autoComplete="new-password"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword((shown) => !shown)}
+            aria-label={showPassword ? "Hide password" : "Show password"}
+            aria-controls="signup-password"
+            aria-pressed={showPassword}
+            className="min-h-[48px] min-w-[64px] px-3 text-sm font-semibold text-[#48195d] border border-[#48195d] rounded-lg cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#48195d]"
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        </div>
       </Field>
 
       <Field id="signup-position" label="Your position" error={errors.position}>
