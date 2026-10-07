@@ -2,6 +2,12 @@
   command = "npm run build"
   publish = "out"
 
+# Public browser configuration, not server credentials. Required at build time
+# so Next.js includes these values in the static signup page.
+[build.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "https://adaavzuscwoyomabnpzb.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkYWF2enVzY3dveW9tYWJucHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM5OTgyNDcsImV4cCI6MjA5OTU3NDI0N30.k1hPQas2BJH4-SJ4c4J1MnNipP_ApGwO7uVtq4C_RyI"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
