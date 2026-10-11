@@ -57,6 +57,10 @@ const EMPTY_VALUES: Values = {
 
 const MIN_PASSWORD_LENGTH = 8;
 
+// Shown only if CACFP Free's refusal arrives without its own text.
+const PHONE_IN_USE_FALLBACK =
+  "That mobile number is already used by another CACFP Free account, so we did not create a new account. Please use a different number. If the number is yours, sign in instead.";
+
 function normalizeMobile(input: string): string | null {
   const digits = input.replace(/\D/g, "");
   return digits.length === 10 ? digits : null;
@@ -116,8 +120,10 @@ export default function SignupForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [view, setView] = useState<ViewState>("form");
   const [showPassword, setShowPassword] = useState(false);
+  const [phoneInUseMessage, setPhoneInUseMessage] = useState("");
 
   function setField<K extends keyof Values>(key: K, value: Values[K]) {
+    if (key === "mobile") setPhoneInUseMessage("");
     setValues((v) => ({ ...v, [key]: value }));
     setErrors((er) => ({ ...er, [key]: undefined }));
   }
@@ -212,6 +218,21 @@ export default function SignupForm() {
       });
 
       if (handoffResponse.status === 409) {
+        // CACFP Free refuses a mobile number another account already uses (code "phone_in_use"). That is not "this email has an
+        // account": keep everything the person typed, explain, and let them correct the number. CACFP Free has already removed the
+        // sign-in identity this attempt created, so submitting again with the same email works.
+        let refusal: { code?: string; error?: string } = {};
+        try {
+          refusal = (await handoffResponse.json()) as { code?: string; error?: string };
+        } catch {
+          refusal = {};
+        }
+        if (refusal.code === "phone_in_use") {
+          setPhoneInUseMessage(refusal.error || PHONE_IN_USE_FALLBACK);
+          setErrors({ mobile: "This mobile number is already used by another CACFP Free account." });
+          setView("form");
+          return;
+        }
         setView("account_exists");
         return;
       }
@@ -335,6 +356,16 @@ export default function SignupForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      {phoneInUseMessage && (
+        <div role="alert" className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+          <p className="text-[#1a1a2e] text-sm">{phoneInUseMessage}</p>
+          <p className="text-sm mt-2">
+            <a href={`${CACFP_FREE_APP_URL}/login`} className="underline text-[#48195d] font-semibold">
+              Sign in instead
+            </a>
+          </p>
+        </div>
+      )}
       <div className="grid sm:grid-cols-2 gap-5">
         <Field id="signup-first-name" label="First name" error={errors.first_name}>
           <input
