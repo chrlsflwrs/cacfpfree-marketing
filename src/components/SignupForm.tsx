@@ -43,7 +43,7 @@ type Values = {
   mobile: string;
 };
 
-type ViewState = "form" | "submitting" | "account_exists" | "error";
+type ViewState = "form" | "submitting" | "redirecting" | "account_exists" | "error";
 
 const EMPTY_VALUES: Values = {
   email: "",
@@ -260,6 +260,10 @@ export default function SignupForm() {
         refresh_token: handoffBody.refresh_token,
         path: handoffBody.path,
       }).toString();
+      setView("redirecting");
+      // Give the confirmed success state enough time to be perceived on a
+      // phone before handing the person into the app.
+      await new Promise((resolve) => window.setTimeout(resolve, 800));
       window.location.href = `${CACFP_FREE_APP_URL}/auth/complete#${fragment}`;
     } catch {
       setView("error");
@@ -348,6 +352,15 @@ export default function SignupForm() {
         >
           Try again
         </button>
+      </div>
+    );
+  }
+
+  if (view === "redirecting") {
+    return (
+      <div role="status" className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
+        <p className="text-[#1a1a2e] font-semibold text-lg mb-1">You&apos;re all set!</p>
+        <p className="text-gray-600 text-sm">Your account is ready. Opening CACFP Free…</p>
       </div>
     );
   }
@@ -460,17 +473,23 @@ export default function SignupForm() {
       </Field>
 
       <Field id="signup-mobile" label="Mobile phone number" error={errors.mobile}>
-        <input
-          id="signup-mobile"
-          name="mobile"
-          type="tel"
-          required
-          value={values.mobile}
-          onChange={(e) => setField("mobile", e.target.value)}
-          className={inputClass(!!errors.mobile)}
-          placeholder="(512) 555-1234"
-          autoComplete="tel"
-        />
+        <>
+          <input
+            id="signup-mobile"
+            name="mobile"
+            type="tel"
+            required
+            value={values.mobile}
+            onChange={(e) => setField("mobile", e.target.value)}
+            className={inputClass(!!errors.mobile)}
+            placeholder="(512) 555-1234"
+            autoComplete="tel"
+            aria-describedby="signup-mobile-help"
+          />
+          <p id="signup-mobile-help" className="text-gray-500 text-xs mt-1.5">
+            Use a mobile number so CACFP Free can send secure sign-in links and optional meal reminders. You can turn reminders off.
+          </p>
+        </>
       </Field>
 
       <button
