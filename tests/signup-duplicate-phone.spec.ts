@@ -117,6 +117,7 @@ test("a different 409 (no code) shows the red email-in-use error and keeps the f
   await expect(page.getByText("This email is already used by another CACFP Free account.", { exact: false })).toBeVisible();
   await expect(page.getByRole("main").getByRole("button", { name: "Sign up free" })).toBeVisible();
   await expect(page.getByText("This email is already associated with a CACFP Free account.")).toHaveCount(0);
+  await expect(page.getByRole("alert").filter({ hasText: "That email is already used by another CACFP Free account" })).toBeVisible();
   await expect(refusalAlert(page)).toHaveCount(0);
 });
 

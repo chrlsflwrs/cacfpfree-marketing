@@ -112,7 +112,8 @@ function Field({
 }
 
 // Katie, Nov 20: an email that already has an account shows a red error under the Email box and keeps the form, never a separate page.
-const EMAIL_IN_USE_MESSAGE = "This email is already used by another CACFP Free account. Use a different email, or sign in instead.";
+const EMAIL_IN_USE_MESSAGE = "This email is already used by another CACFP Free account.";
+const EMAIL_IN_USE_BOX = "That email is already used by another CACFP Free account, so we did not create a new account. Please use a different email. If the email is yours, sign in instead.";
 
 export default function SignupForm() {
   const [testAccessCode, setTestAccessCode] = useState("");
@@ -126,7 +127,7 @@ export default function SignupForm() {
   const [phoneInUseMessage, setPhoneInUseMessage] = useState("");
 
   function setField<K extends keyof Values>(key: K, value: Values[K]) {
-    if (key === "mobile") setPhoneInUseMessage("");
+    if (key === "mobile" || key === "email") setPhoneInUseMessage("");
     setValues((v) => ({ ...v, [key]: value }));
     setErrors((er) => ({ ...er, [key]: undefined }));
   }
@@ -188,6 +189,7 @@ export default function SignupForm() {
         // matched loosely on purpose. Anything else falls through to the
         // generic error state, never the account-exists one.
         if (/registered|already exists|already been registered/i.test(signUpError.message)) {
+          setPhoneInUseMessage(EMAIL_IN_USE_BOX);
           setErrors({ email: EMAIL_IN_USE_MESSAGE });
           setView("form");
         } else {
@@ -237,7 +239,8 @@ export default function SignupForm() {
           setView("form");
           return;
         }
-        setErrors({ email: EMAIL_IN_USE_MESSAGE });
+        setPhoneInUseMessage(EMAIL_IN_USE_BOX);
+          setErrors({ email: EMAIL_IN_USE_MESSAGE });
           setView("form");
         return;
       }
