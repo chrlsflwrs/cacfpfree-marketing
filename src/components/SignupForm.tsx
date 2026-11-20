@@ -484,11 +484,7 @@ export default function SignupForm() {
             className={inputClass(!!errors.mobile)}
             placeholder="(512) 555-1234"
             autoComplete="tel"
-            aria-describedby="signup-mobile-help"
           />
-          <p id="signup-mobile-help" className="text-gray-500 text-xs mt-1.5">
-            Use a mobile number so CACFP Free can send secure sign-in links and optional meal reminders. You can turn reminders off.
-          </p>
         </>
       </Field>
 
