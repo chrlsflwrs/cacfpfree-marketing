@@ -110,11 +110,13 @@ test("the mobile field has no extra help sentence under it (Katie, Nov 20)", asy
   await expect(page.getByText("optional meal reminders")).toHaveCount(0);
 });
 
-test("a different 409 (no code) still shows the existing account message, unchanged", async ({ page }) => {
+test("a different 409 (no code) shows the red email-in-use error and keeps the form (Katie, Nov 20)", async ({ page }) => {
   await stubServices(page, [{ status: 409, body: { error: "Email is already linked to a different ecosystem identity" } }]);
   await fillSignup(page, "(512) 555-0100");
   await page.getByRole("main").getByRole("button", { name: "Sign up free" }).click();
-  await expect(page.getByText("This email is already associated with a CACFP Free account.")).toBeVisible();
+  await expect(page.getByText("This email is already used by another CACFP Free account.", { exact: false })).toBeVisible();
+  await expect(page.getByRole("main").getByRole("button", { name: "Sign up free" })).toBeVisible();
+  await expect(page.getByText("This email is already associated with a CACFP Free account.")).toHaveCount(0);
   await expect(refusalAlert(page)).toHaveCount(0);
 });
 

@@ -111,6 +111,9 @@ function Field({
   );
 }
 
+// Katie, Nov 20: an email that already has an account shows a red error under the Email box and keeps the form, never a separate page.
+const EMAIL_IN_USE_MESSAGE = "This email is already used by another CACFP Free account. Use a different email, or sign in instead.";
+
 export default function SignupForm() {
   const [testAccessCode, setTestAccessCode] = useState("");
   const [gateUnlocked, setGateUnlocked] = useState(false);
@@ -185,7 +188,8 @@ export default function SignupForm() {
         // matched loosely on purpose. Anything else falls through to the
         // generic error state, never the account-exists one.
         if (/registered|already exists|already been registered/i.test(signUpError.message)) {
-          setView("account_exists");
+          setErrors({ email: EMAIL_IN_USE_MESSAGE });
+          setView("form");
         } else {
           setView("error");
         }
@@ -233,7 +237,8 @@ export default function SignupForm() {
           setView("form");
           return;
         }
-        setView("account_exists");
+        setErrors({ email: EMAIL_IN_USE_MESSAGE });
+          setView("form");
         return;
       }
       if (!handoffResponse.ok) {
