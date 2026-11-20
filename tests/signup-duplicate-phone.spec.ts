@@ -100,15 +100,14 @@ test("correcting the number and submitting again goes through to the app", async
   expect((posts[1] as { mobile: string }).mobile).toBe("5125550199");
 });
 
-test("the mobile field explains why a mobile number is needed and that reminders are optional", async ({ page }) => {
+test("the mobile field has no extra help sentence under it (Katie, Nov 20)", async ({ page }) => {
   await stubServices(page, []);
   await page.goto("/signup");
   await page.getByLabel("Testing access code").fill("local-test-only");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
-  const mobile = page.getByLabel("Mobile phone number");
-  await expect(mobile).toHaveAttribute("aria-describedby", "signup-mobile-help");
-  await expect(page.locator("#signup-mobile-help")).toContainText("secure sign-in links and optional meal reminders");
-  await expect(page.locator("#signup-mobile-help")).toContainText("turn reminders off");
+  await expect(page.getByLabel("Mobile phone number")).toBeVisible();
+  await expect(page.locator("#signup-mobile-help")).toHaveCount(0);
+  await expect(page.getByText("optional meal reminders")).toHaveCount(0);
 });
 
 test("a different 409 (no code) still shows the existing account message, unchanged", async ({ page }) => {
